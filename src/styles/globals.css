@@ -1,0 +1,6525 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #1f2937;
+  background: #ffffff;
+  font-family:
+    "Be Vietnam Pro", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 68px;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(249, 115, 22, 0.28);
+}
+
+@layer components {
+  .container-x {
+    width: min(calc(100% - clamp(2rem, 5vw, 5rem)), 1240px);
+    margin-inline: auto;
+  }
+
+  .figma-header-container {
+    width: min(calc(100% - clamp(2rem, 7vw, 8.75rem)), 1780px);
+    margin-inline: auto;
+  }
+
+  .figma-hero-container {
+    width: min(calc(100% - clamp(2rem, 6vw, 7rem)), 1620px);
+    margin-inline: auto;
+  }
+
+}
+
+.hero-gradient {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 241, 118, 0.86), transparent 24%),
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.34), transparent 28%),
+    radial-gradient(circle at 70% 80%, rgba(239, 68, 68, 0.28), transparent 30%),
+    linear-gradient(135deg, #ef3b00 0%, #ff6b00 40%, #facc15 100%);
+}
+
+.hero-gradient::before,
+.hero-gradient::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.hero-gradient::before {
+  background:
+    repeating-linear-gradient(115deg, transparent 0 38px, rgba(255, 255, 255, 0.13) 38px 41px, transparent 41px 82px),
+    radial-gradient(circle at 58% 46%, rgba(124, 45, 18, 0.24), transparent 32%);
+  mix-blend-mode: soft-light;
+}
+
+.hero-gradient::after {
+  background:
+    linear-gradient(90deg, rgba(124, 45, 18, 0.18), transparent 28%, transparent 70%, rgba(250, 204, 21, 0.18)),
+    radial-gradient(circle at 88% 64%, rgba(255, 255, 255, 0.24), transparent 18%);
+}
+
+.figma-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  object-fit: cover;
+}
+
+.asset-decoration {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 24px rgba(124, 45, 18, 0.18));
+}
+
+.text-fit-container {
+  container-type: inline-size;
+}
+
+.section-title-box {
+  width: min(100%, 920px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title-box.text-left {
+  align-items: flex-start;
+}
+
+.section-title-box::after {
+  width: min(132px, 32vw);
+  height: 4px;
+  margin-top: 1.05rem;
+  content: "";
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.9), rgba(250, 204, 21, 0.86), transparent);
+}
+
+.section-kicker {
+  font-size: 0.85rem;
+  font-size: clamp(0.76rem, 1.65cqw, 0.92rem);
+  line-height: 1.2;
+  letter-spacing: 0.065em;
+  box-shadow: 0 10px 26px rgba(124, 45, 18, 0.08);
+  text-wrap: balance;
+}
+
+.section-heading {
+  max-width: 100%;
+  font-size: 4.35rem;
+  font-size: clamp(2.15rem, 7.6cqw, 5.25rem);
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.challenge-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.65rem 0.9rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(124, 45, 18, 0.18);
+  backdrop-filter: blur(8px);
+}
+
+.card-heading {
+  font-size: 1.3rem;
+  font-size: clamp(1.05rem, 5.2cqw, 1.34rem);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.stage-heading {
+  font-size: 1.55rem;
+  font-size: clamp(1.08rem, 3.75cqw, 1.95rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.042em;
+  word-spacing: 0.02em;
+  text-wrap: nowrap;
+  white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+  .stage-heading {
+    font-size: clamp(1.35rem, 8.2vw, 1.85rem);
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    white-space: normal;
+  }
+}
+
+.journey-heading {
+  max-width: 760px;
+  font-size: 2.35rem;
+  font-size: clamp(1.6rem, 5.8cqw, 2.85rem);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.experience-card-title {
+  font-size: 1.45rem;
+  font-size: clamp(1.1rem, 5.8cqw, 1.62rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+
+.champion-trophy {
+  filter:
+    saturate(1.12)
+    contrast(1.08)
+    drop-shadow(0 24px 24px rgba(0, 0, 0, 0.34))
+    drop-shadow(0 0 42px rgba(250, 204, 21, 0.3));
+}
+
+.reward-champion-card,
+.reward-medal-card {
+  isolation: isolate;
+}
+
+.reward-champion-card::before,
+.reward-medal-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(115deg, transparent 0 44%, rgba(255, 255, 255, 0.28) 50%, transparent 58%),
+    radial-gradient(circle at 18% 82%, rgba(249, 115, 22, 0.14), transparent 30%);
+  transform: translateX(-120%);
+  animation: reward-card-shine 6.8s ease-in-out infinite;
+}
+
+.reward-medal-card::after {
+  position: absolute;
+  right: -12%;
+  bottom: -22%;
+  z-index: 0;
+  width: min(220px, 48vw);
+  aspect-ratio: 1;
+  content: "";
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.18), transparent 64%);
+  border-radius: 999px;
+}
+
+.fit-copy {
+  letter-spacing: 0.005em;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
+
+.fit-pill {
+  max-width: 100%;
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: #9a3412;
+  background: linear-gradient(135deg, #ffedd5, #fef3c7);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  box-shadow: 0 10px 22px rgba(249, 115, 22, 0.12);
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.score-strategy-card {
+  isolation: isolate;
+}
+
+.score-arena {
+  position: relative;
+}
+
+.launch-benefit {
+  border: 1px solid rgba(249, 115, 22, 0.16);
+  background:
+    radial-gradient(circle at 8% 50%, rgba(249, 115, 22, 0.12), transparent 22%),
+    rgba(255, 255, 255, 0.9);
+}
+
+.score-arena::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(115deg, transparent 0 36px, rgba(255, 255, 255, 0.15) 36px 39px, transparent 39px 82px),
+    radial-gradient(circle at 14% 74%, rgba(255, 255, 255, 0.24), transparent 22%);
+  mix-blend-mode: soft-light;
+  animation: score-arena-energy 14s linear infinite;
+}
+
+.score-layout {
+  align-items: stretch;
+}
+
+.score-table-panel,
+.comeback-panel {
+  min-width: 0;
+}
+
+.score-table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(249, 115, 22, 0.42) rgba(255, 237, 213, 0.72);
+}
+
+.score-table-grid {
+  width: 100%;
+}
+
+.score-cell {
+  display: grid;
+  min-height: 5.6rem;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(249, 115, 22, 0.1);
+  border-radius: 1.15rem;
+}
+
+.score-cell--header {
+  min-height: 4.3rem;
+  color: #111827;
+  font-size: 0.95rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: #ffffff;
+  box-shadow: 0 12px 26px rgba(124, 45, 18, 0.08);
+}
+
+.score-cell--label {
+  justify-items: center;
+  background: #fff7ed;
+}
+
+.score-cell--value {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.score-cell--value span {
+  display: inline-block;
+  animation: score-value-pulse 3.4s ease-in-out infinite;
+}
+
+.comeback-panel {
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  overflow: hidden;
+}
+
+.comeback-panel::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    radial-gradient(circle at 86% 12%, rgba(250, 204, 21, 0.22), transparent 24%),
+    radial-gradient(circle at 12% 86%, rgba(249, 115, 22, 0.2), transparent 28%);
+  animation: comeback-glow 4.8s ease-in-out infinite;
+}
+
+.comeback-panel h3 {
+  font-size: clamp(2rem, 15cqw, 4rem);
+  letter-spacing: 0;
+}
+
+.bonus-card {
+  min-width: 0;
+}
+
+.bonus-card h4,
+.bonus-card p {
+  overflow-wrap: anywhere;
+}
+
+.challenge-card {
+  position: relative;
+}
+
+.challenge-card::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(135deg, rgba(255, 107, 0, 0.16) 0 2px, transparent 2px 44px),
+    linear-gradient(135deg, transparent 0 72%, rgba(255, 107, 0, 0.12) 72% 100%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.challenge-card:hover::before {
+  opacity: 1;
+}
+
+.connected-card-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.connected-card-grid::before {
+  position: absolute;
+  inset: -1rem;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(249, 115, 22, 0.1), rgba(14, 165, 233, 0.08), rgba(250, 204, 21, 0.12)),
+    rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 2.25rem;
+}
+
+.connected-card {
+  position: relative;
+}
+
+.connected-card::after {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.25rem;
+  left: 1.5rem;
+  height: 3px;
+  content: "";
+  background: linear-gradient(90deg, #f97316, #22c55e, #0ea5e9);
+  border-radius: 999px;
+  opacity: 0.22;
+}
+
+@supports not (font-size: 1cqw) {
+  .section-heading {
+    font-size: clamp(2rem, 4.6rem, 5.75rem);
+  }
+
+  .stage-heading,
+  .journey-heading {
+    font-size: 2.6rem;
+  }
+}
+
+.hero-title-image {
+  filter: drop-shadow(0 16px 0 rgba(180, 69, 0, 0.12)) drop-shadow(0 22px 42px rgba(124, 45, 18, 0.18));
+}
+
+.hero-original-graphic {
+  transform-origin: center;
+  filter: saturate(1.16) contrast(1.08) drop-shadow(0 28px 34px rgba(76, 29, 12, 0.34));
+}
+
+.hero-original-graphic--sharp {
+  animation: future-markers-pop 3.8s ease-in-out infinite;
+  filter:
+    saturate(1.38)
+    contrast(1.22)
+    brightness(1.05)
+    drop-shadow(0 30px 38px rgba(76, 29, 12, 0.38))
+    drop-shadow(0 0 26px rgba(250, 204, 21, 0.34));
+}
+
+.hero-graphic-shell {
+  isolation: isolate;
+}
+
+.hero-graphic-shell::before {
+  position: absolute;
+  inset: 10% 2% 6% 4%;
+  z-index: -1;
+  content: "";
+  background:
+    radial-gradient(circle at 46% 40%, rgba(255, 255, 255, 0.45), transparent 48%),
+    radial-gradient(circle at 54% 54%, rgba(124, 45, 18, 0.18), transparent 58%);
+  border-radius: 999px;
+  filter: blur(16px);
+}
+
+.hero-graphic-shell--energized::after {
+  position: absolute;
+  inset: 14% 4% 12% 8%;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(circle at 48% 42%, rgba(255, 255, 255, 0.48), transparent 34%),
+    radial-gradient(circle at 56% 54%, rgba(250, 204, 21, 0.3), transparent 44%),
+    radial-gradient(circle at 70% 48%, rgba(249, 115, 22, 0.2), transparent 52%);
+  border-radius: 999px;
+  filter: blur(18px);
+  animation: future-glow-breathe 3.4s ease-in-out infinite;
+}
+
+.hero-future-glow {
+  position: absolute;
+  inset: 20% 6% 14% 10%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 54% 52%, rgba(255, 255, 255, 0.34), transparent 32%),
+    radial-gradient(circle at 60% 54%, rgba(250, 204, 21, 0.44), transparent 52%);
+  border-radius: 999px;
+  filter: blur(22px);
+}
+
+.stage-sequence {
+  position: relative;
+}
+
+.stage-sequence::before {
+  position: absolute;
+  top: 1.75rem;
+  bottom: 1.75rem;
+  left: clamp(1.2rem, 3vw, 2rem);
+  width: 4px;
+  content: "";
+  background: linear-gradient(180deg, rgba(249, 115, 22, 0), rgba(249, 115, 22, 0.36), rgba(14, 165, 233, 0.24), rgba(249, 115, 22, 0));
+  border-radius: 999px;
+}
+
+.stage-card {
+  position: relative;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(250, 204, 21, 0.13), transparent 28%),
+    linear-gradient(135deg, rgba(255, 250, 243, 0.98), rgba(255, 255, 255, 0.96) 48%, rgba(255, 247, 237, 0.96));
+  border-color: rgba(251, 146, 60, 0.26);
+}
+
+.stage-card::before {
+  position: absolute;
+  top: 1.8rem;
+  left: clamp(1.05rem, 3vw, 1.8rem);
+  z-index: 2;
+  width: 1rem;
+  aspect-ratio: 1;
+  content: "";
+  background: #f97316;
+  border: 4px solid #fff7ed;
+  border-radius: 999px;
+  box-shadow: 0 0 0 8px rgba(249, 115, 22, 0.12);
+}
+
+.stage-visual-panel {
+  position: relative;
+  background:
+    radial-gradient(circle at 46% 54%, rgba(250, 204, 21, 0.14), transparent 42%),
+    linear-gradient(135deg, rgba(255, 247, 237, 0.72), rgba(255, 255, 255, 0.72));
+}
+
+.stage-visual-panel::before {
+  position: absolute;
+  inset: 14% 10%;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(circle, rgba(124, 45, 18, 0.12), transparent 62%);
+  border-radius: 999px;
+  filter: blur(22px);
+}
+
+.stage-visual-image {
+  opacity: 1;
+  mix-blend-mode: normal;
+  filter:
+    saturate(1.08)
+    contrast(1.04)
+    drop-shadow(0 24px 28px rgba(124, 45, 18, 0.16));
+}
+
+.stage-copy-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 247, 237, 0.7));
+}
+
+.ocean-glow {
+  position: absolute;
+  width: min(560px, 68vw);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.24), transparent 68%);
+  border-radius: 999px;
+  filter: blur(10px);
+}
+
+.journey-bg {
+  position: absolute;
+  inset: -8% 0;
+  background:
+    linear-gradient(180deg, rgba(2, 8, 23, 0.42), rgba(2, 8, 23, 0.92)),
+    radial-gradient(circle at 78% 22%, rgba(250, 204, 21, 0.18), transparent 18%),
+    radial-gradient(circle at 12% 38%, rgba(14, 165, 233, 0.18), transparent 24%),
+    linear-gradient(140deg, #061122 0%, #0f172a 42%, #111827 100%);
+}
+
+.journey-bg::after {
+  position: absolute;
+  right: -8%;
+  bottom: 0;
+  left: -8%;
+  height: 46%;
+  content: "";
+  background:
+    linear-gradient(135deg, transparent 0 35%, rgba(255, 255, 255, 0.08) 36% 37%, transparent 38%),
+    linear-gradient(25deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 100%),
+    linear-gradient(180deg, transparent, rgba(255, 107, 0, 0.12));
+  background-size: 190px 120px, 88px 88px, auto;
+  transform: skewY(-3deg);
+}
+
+.event-visual {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 260px;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1.6rem;
+  background: #bae6fd;
+  transform-origin: center;
+}
+
+.event-visual__sky,
+.event-visual__water,
+.event-visual__track,
+.event-visual__stage,
+.event-visual__sun,
+.event-visual__mountain,
+.event-visual__palm,
+.event-visual__spark,
+.event-visual__label {
+  position: absolute;
+}
+
+.event-visual__sky {
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.78), transparent 18%),
+    linear-gradient(180deg, #fef3c7 0%, #7dd3fc 54%, #0ea5e9 100%);
+}
+
+.event-visual__sun {
+  top: 11%;
+  right: 12%;
+  width: 94px;
+  aspect-ratio: 1;
+  background: #facc15;
+  border-radius: 999px;
+  box-shadow: 0 0 50px rgba(250, 204, 21, 0.54);
+}
+
+.event-visual__mountain {
+  bottom: 18%;
+  left: 0;
+  width: 72%;
+  height: 38%;
+  background: linear-gradient(135deg, #16a34a, #065f46);
+  clip-path: polygon(0 100%, 28% 18%, 50% 72%, 70% 28%, 100% 100%);
+  opacity: 0.8;
+}
+
+.event-visual__mountain--back {
+  bottom: 28%;
+  left: 16%;
+  width: 72%;
+  height: 30%;
+  background: linear-gradient(135deg, #86efac, #0891b2);
+  opacity: 0.45;
+}
+
+.event-visual__water {
+  right: -8%;
+  bottom: 0;
+  left: -8%;
+  height: 37%;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.22) 0 2px, transparent 2px 18px),
+    linear-gradient(180deg, #38bdf8, #0369a1);
+  border-radius: 60% 60% 0 0 / 28% 28% 0 0;
+}
+
+.event-visual__track {
+  right: -20%;
+  bottom: -12%;
+  left: -20%;
+  height: 38%;
+  background:
+    linear-gradient(90deg, transparent 47%, rgba(255, 255, 255, 0.44) 48% 52%, transparent 53%),
+    linear-gradient(180deg, #fed7aa, #fb923c);
+  border-radius: 50% 50% 0 0;
+  opacity: 0;
+}
+
+.event-visual__stage {
+  right: 12%;
+  bottom: 12%;
+  left: 12%;
+  height: 32%;
+  background:
+    linear-gradient(90deg, rgba(250, 204, 21, 0.8) 0 6px, transparent 6px 100%),
+    linear-gradient(180deg, #1e293b, #020817);
+  border-radius: 18px 18px 8px 8px;
+  box-shadow: 0 -42px 60px rgba(250, 204, 21, 0.12);
+  opacity: 0;
+}
+
+.event-visual__palm {
+  bottom: 15%;
+  width: 14px;
+  height: 96px;
+  background: #92400e;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.event-visual__palm::before {
+  position: absolute;
+  top: -34px;
+  left: -42px;
+  width: 96px;
+  height: 58px;
+  content: "";
+  background: conic-gradient(from 230deg, #16a34a, #86efac, #16a34a, #059669);
+  border-radius: 70% 30% 70% 30%;
+  transform: rotate(-18deg);
+}
+
+.event-visual__palm--left {
+  left: 12%;
+  transform: rotate(7deg);
+}
+
+.event-visual__palm--right {
+  right: 13%;
+  transform: rotate(-8deg);
+}
+
+.event-visual__spark {
+  width: 24px;
+  aspect-ratio: 1;
+  background: #fff176;
+  clip-path: polygon(50% 0, 60% 38%, 100% 50%, 60% 62%, 50% 100%, 40% 62%, 0 50%, 40% 38%);
+  filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.6));
+}
+
+.event-visual__spark--one {
+  top: 22%;
+  left: 18%;
+}
+
+.event-visual__spark--two {
+  top: 30%;
+  right: 22%;
+  width: 18px;
+}
+
+.event-visual__label {
+  z-index: 5;
+  left: 22px;
+  bottom: 20px;
+  padding: 0.7rem 0.9rem;
+  color: #7c2d12;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.event-visual--departure .event-visual__track,
+.event-visual--tug .event-visual__track,
+.event-visual--team .event-visual__track {
+  opacity: 1;
+}
+
+.event-visual--departure .event-visual__track {
+  background:
+    linear-gradient(90deg, transparent 47%, rgba(255, 255, 255, 0.68) 48% 52%, transparent 53%),
+    linear-gradient(180deg, #475569, #111827);
+}
+
+.event-visual--beach .event-visual__palm,
+.event-visual--team .event-visual__palm,
+.event-visual--shore .event-visual__palm,
+.event-visual--bar .event-visual__palm {
+  opacity: 1;
+}
+
+.event-visual--city .event-visual__mountain--front {
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+}
+
+.event-visual--city .event-visual__water {
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.22) 0 2px, transparent 2px 18px),
+    linear-gradient(180deg, #64748b, #1e293b);
+}
+
+.event-visual--tug .event-visual__sun,
+.event-visual--team .event-visual__sun {
+  right: auto;
+  left: 12%;
+}
+
+.event-visual--tug .event-visual__track::after {
+  position: absolute;
+  top: 34%;
+  right: 16%;
+  left: 16%;
+  height: 6px;
+  content: "";
+  background: repeating-linear-gradient(90deg, #7c2d12 0 12px, #facc15 12px 18px);
+  border-radius: 999px;
+}
+
+.event-visual--talent .event-visual__sky,
+.event-visual--night .event-visual__sky,
+.event-visual--bar .event-visual__sky {
+  background:
+    radial-gradient(circle at 22% 22%, rgba(250, 204, 21, 0.3), transparent 16%),
+    radial-gradient(circle at 76% 18%, rgba(14, 165, 233, 0.24), transparent 16%),
+    linear-gradient(180deg, #0f172a 0%, #1e293b 48%, #020817 100%);
+}
+
+.event-visual--talent .event-visual__stage,
+.event-visual--night .event-visual__stage,
+.event-visual--bar .event-visual__stage {
+  opacity: 1;
+}
+
+.event-visual--talent .event-visual__mountain,
+.event-visual--night .event-visual__mountain,
+.event-visual--bar .event-visual__mountain,
+.event-visual--talent .event-visual__water,
+.event-visual--night .event-visual__water,
+.event-visual--bar .event-visual__water {
+  opacity: 0.35;
+}
+
+.event-visual--pool .event-visual__sky,
+.event-visual--shore .event-visual__sky {
+  background:
+    radial-gradient(circle at 24% 20%, rgba(255, 255, 255, 0.78), transparent 18%),
+    linear-gradient(180deg, #e0f2fe 0%, #7dd3fc 48%, #22c55e 100%);
+}
+
+.event-visual--pool .event-visual__water {
+  height: 58%;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0 14px, transparent 14px 28px),
+    linear-gradient(180deg, #67e8f9, #0284c7);
+}
+
+.event-visual--shore .event-visual__track {
+  opacity: 1;
+  background: linear-gradient(180deg, #fef3c7, #fdba74);
+}
+
+.event-visual--gym .event-visual__sky {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, #334155, #0f172a);
+  background-size: 32px 32px, auto;
+}
+
+.event-visual--gym .event-visual__track {
+  opacity: 1;
+  background:
+    linear-gradient(90deg, transparent 45%, #f97316 45% 55%, transparent 55%),
+    linear-gradient(180deg, #1f2937, #020817);
+}
+
+.event-visual--gym .event-visual__stage {
+  opacity: 1;
+  right: 18%;
+  bottom: 28%;
+  left: 18%;
+  height: 14%;
+  background: #e5e7eb;
+  border-radius: 999px;
+}
+
+.cta-pattern::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 22px),
+    radial-gradient(circle at 22% 24%, rgba(255, 255, 255, 0.18), transparent 20%),
+    radial-gradient(circle at 82% 72%, rgba(250, 204, 21, 0.28), transparent 24%);
+  animation: pattern-slide 18s linear infinite;
+}
+
+@keyframes pattern-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(34px, 0, 0);
+  }
+}
+
+@keyframes future-markers-pop {
+  0%,
+  100% {
+    filter:
+      saturate(1.34)
+      contrast(1.18)
+      brightness(1.04)
+      drop-shadow(0 30px 38px rgba(76, 29, 12, 0.36))
+      drop-shadow(0 0 20px rgba(250, 204, 21, 0.28));
+  }
+
+  50% {
+    filter:
+      saturate(1.48)
+      contrast(1.3)
+      brightness(1.1)
+      drop-shadow(0 34px 42px rgba(76, 29, 12, 0.42))
+      drop-shadow(0 0 42px rgba(250, 204, 21, 0.46));
+  }
+}
+
+@keyframes future-glow-breathe {
+  0%,
+  100% {
+    opacity: 0.54;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.86;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes score-arena-energy {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 180px 0, 0 0;
+  }
+}
+
+@keyframes score-value-pulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 0 rgba(249, 115, 22, 0));
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.025);
+    filter: drop-shadow(0 8px 12px rgba(249, 115, 22, 0.18));
+  }
+}
+
+@keyframes comeback-glow {
+  0%,
+  100% {
+    opacity: 0.86;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes reward-card-shine {
+  0%,
+  42% {
+    transform: translateX(-120%);
+  }
+
+  64%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@media (max-width: 767px) {
+  .event-visual__label {
+    left: 16px;
+    bottom: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+
+/* Client feedback refinements */
+.stages-section {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(249, 115, 22, 0.08), transparent 26%),
+    radial-gradient(circle at 86% 24%, rgba(14, 165, 233, 0.08), transparent 22%),
+    linear-gradient(180deg, #eef2f7 0%, #f8efe4 48%, #eef2f7 100%);
+}
+
+.stages-section .section-title-box {
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.stage-card {
+  border-width: 2px;
+  border-color: rgba(249, 115, 22, 0.42);
+  background:
+    radial-gradient(circle at 14% 20%, rgba(250, 204, 21, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(255, 253, 247, 1), rgba(255, 255, 255, 1) 48%, rgba(255, 244, 230, 1));
+  box-shadow:
+    0 26px 70px rgba(124, 45, 18, 0.16),
+    0 0 0 1px rgba(255, 255, 255, 0.82) inset;
+}
+
+.stage-copy-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 238, 0.98));
+}
+
+.stage-visual-panel {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.12), transparent 44%),
+    linear-gradient(135deg, rgba(255, 251, 242, 0.92), rgba(255, 255, 255, 0.94));
+}
+
+.stage-visual-panel::before {
+  opacity: 0.18;
+}
+
+.stage-visual-image {
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  filter:
+    saturate(1.35)
+    contrast(1.18)
+    brightness(1.03)
+    drop-shadow(0 26px 30px rgba(124, 45, 18, 0.18));
+}
+
+.connected-card .lucide {
+  opacity: 1;
+  filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.65));
+}
+
+.score-stack {
+  position: relative;
+  z-index: 1;
+}
+
+.score-wide-box {
+  min-height: unset;
+}
+
+.score-wide-box--strategy {
+  background:
+    radial-gradient(circle at 10% 8%, rgba(249, 115, 22, 0.11), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 247, 237, 0.96));
+}
+
+.score-wide-box .score-table-panel {
+  min-height: unset;
+}
+
+.comeback-panel .bonus-grid {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .comeback-panel .bonus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .comeback-panel .bonus-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .stage-sequence {
+    padding-left: 0 !important;
+  }
+
+  .stage-sequence::before {
+    display: none;
+  }
+
+  .stage-card::before {
+    top: 1rem;
+    left: 1rem;
+  }
+}
+
+/* Fine-tune scoring section: balanced, readable, full-width table layout */
+.score-heading-row {
+  text-wrap: balance;
+}
+
+.score-table-grid {
+  width: 100%;
+}
+
+.score-cell {
+  min-height: 4.55rem;
+  padding: 0.82rem 0.65rem;
+  border-radius: 1rem;
+}
+
+.score-cell--header {
+  min-height: 3.45rem;
+  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+  line-height: 1.1;
+}
+
+.score-cell--label {
+  align-content: center;
+  gap: 0.1rem;
+}
+
+.score-row-title {
+  font-size: clamp(0.9rem, 1.55vw, 1.16rem);
+}
+
+.score-cell--value {
+  font-size: clamp(1.65rem, 3.3vw, 2.55rem);
+}
+
+.score-cell--value span {
+  animation-duration: 4.2s;
+}
+
+.comeback-panel h3 {
+  font-size: clamp(2rem, 6.2cqw, 3.2rem);
+}
+
+.bonus-card {
+  min-width: 0;
+}
+
+.bonus-card p,
+.bonus-card h4 {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+@media (min-width: 1024px) {
+  .score-wide-box--strategy {
+    padding-inline: clamp(1.8rem, 3vw, 3rem);
+  }
+
+  .score-table-grid {
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .score-cell {
+    min-height: 4rem;
+    padding: 0.65rem 0.5rem;
+  }
+
+  .score-cell--value {
+    font-size: 1.55rem;
+  }
+
+  .bonus-card {
+    min-height: unset;
+  }
+}
+
+/* Mobile/tablet scoring fixes: keep the score table visible and add breathing room */
+.score-stack {
+  row-gap: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.score-heading-row + .score-table-panel {
+  margin-top: clamp(1.65rem, 3.8vw, 2.25rem) !important;
+}
+
+.score-table-panel {
+  overflow: visible;
+}
+
+.score-table-scroll {
+  overflow-x: visible !important;
+}
+
+.score-row {
+  min-width: 0;
+}
+
+.score-cell {
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 639px) {
+  .score-arena .relative.isolate {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .score-wide-box--strategy {
+    border-radius: 1.55rem;
+    padding: 1rem !important;
+  }
+
+  .score-heading-row {
+    padding-inline: 0.15rem;
+  }
+
+  .score-heading-row h2 {
+    font-size: clamp(1.45rem, 8.6vw, 2.05rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  .score-heading-row p:last-child {
+    margin-top: 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .score-table-panel {
+    margin-top: 1.4rem !important;
+    padding: 0.55rem !important;
+    border-radius: 1.15rem !important;
+  }
+
+  .score-table-grid {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .score-row {
+    grid-template-columns: minmax(4.6rem, 1.18fr) repeat(4, minmax(0, 0.82fr)) !important;
+    gap: 0.32rem !important;
+  }
+
+  .score-cell {
+    min-height: 3.05rem !important;
+    border-radius: 0.72rem !important;
+    padding: 0.38rem 0.24rem !important;
+  }
+
+  .score-cell--header {
+    min-height: 2.55rem !important;
+    font-size: 0.55rem !important;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+
+  .score-cell--label {
+    justify-items: center;
+  }
+
+  .score-row-title {
+    font-size: 0.62rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .score-cell--label span:last-child {
+    margin-top: 0.18rem !important;
+    font-size: 0.48rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .score-cell--value {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+  }
+
+  .score-cell--value span {
+    animation: none !important;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 639px) {
+  .score-row {
+    grid-template-columns: minmax(5.25rem, 1.18fr) repeat(4, minmax(0, 0.9fr)) !important;
+    gap: 0.42rem !important;
+  }
+
+  .score-cell--header {
+    font-size: 0.6rem !important;
+  }
+
+  .score-row-title {
+    font-size: 0.68rem !important;
+  }
+
+  .score-cell--label span:last-child {
+    font-size: 0.52rem !important;
+  }
+
+  .score-cell--value {
+    font-size: 1.12rem !important;
+  }
+}
+
+/* Exact Figma-exported heading SVGs. These replace only the special display titles,
+   keeping body text, cards, layout, and the rest of the interface unchanged. */
+.section-heading-svg {
+  display: block;
+  width: min(100%, var(--heading-svg-width, 100%));
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 12px 18px rgba(249, 115, 22, 0.12));
+}
+
+.score-title-svg {
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 10px 18px rgba(249, 115, 22, 0.12));
+}
+
+.comeback-title-svg {
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 12px 20px rgba(249, 115, 22, 0.18));
+}
+
+@media (max-width: 640px) {
+  .section-heading-svg {
+    max-height: 92px;
+  }
+
+  .score-title-svg {
+    max-height: 88px;
+  }
+
+  .comeback-title-svg {
+    max-width: 300px;
+    max-height: 84px;
+  }
+}
+
+
+/* Final client refinement: keep selected operational headings clean/readable, not cracked. */
+.clean-section-title .section-heading,
+.journey-heading,
+.stage-heading {
+  color: currentColor !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  font-family: "Be Vietnam Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
+.clean-section-title .section-heading {
+  color: #f97316 !important;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.journey-heading {
+  color: #ffffff !important;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.stage-heading {
+  color: #f97316 !important;
+  line-height: 1.08;
+  letter-spacing: -0.026em;
+}
+
+.reward-champion-card {
+  min-height: 500px;
+}
+
+.champion-trophy {
+  transform-origin: center bottom;
+  filter:
+    saturate(1.12)
+    contrast(1.08)
+    drop-shadow(0 22px 24px rgba(0, 0, 0, 0.28))
+    drop-shadow(0 0 34px rgba(250, 204, 21, 0.28));
+}
+
+.reward-medal-card > div,
+.reward-medal-card .flex {
+  align-items: center;
+}
+
+.reward-medal-icon {
+  max-width: 116px;
+  filter:
+    saturate(1.08)
+    contrast(1.06)
+    drop-shadow(0 16px 20px rgba(124, 45, 18, 0.18));
+}
+
+@media (max-width: 640px) {
+  .reward-champion-card {
+    min-height: 420px;
+  }
+
+  .champion-trophy {
+    right: 0.75rem !important;
+    bottom: 1.5rem !important;
+    height: 210px !important;
+  }
+
+  .reward-medal-icon {
+    max-width: 88px;
+  }
+}
+
+/* Hard override after client review: these operational/reward titles must stay clean,
+   readable, and must not inherit the cracked display treatment. */
+body .clean-section-title .section-heading,
+body .journey-heading,
+body .stage-heading {
+  background: transparent !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: currentColor !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  font-family: "Be Vietnam Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight: 900 !important;
+}
+
+body .clean-section-title .section-heading {
+  color: #f97316 !important;
+  font-size: clamp(2.4rem, 7vw, 5.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+body .journey-heading {
+  color: #ffffff !important;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+body .stage-heading {
+  color: #f97316 !important;
+  line-height: 1.08;
+  letter-spacing: -0.026em;
+}
+
+body .reward-medal-icon {
+  display: block;
+  height: clamp(5rem, 8vw, 7rem);
+  max-width: 118px;
+  object-fit: contain;
+  object-position: center;
+}
+
+body .champion-trophy {
+  bottom: clamp(2rem, 4vw, 3.5rem) !important;
+  right: clamp(1rem, 4vw, 3rem) !important;
+  height: clamp(13rem, 26vw, 21.5rem) !important;
+  object-position: center bottom;
+}
+
+
+/* PDF comment pass: compact header and cleaner section labels. */
+.design-section-title .section-kicker {
+  border: 0 !important;
+  background: transparent !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  letter-spacing: 0.08em;
+}
+
+.design-section-title::after {
+  margin-top: 0.85rem;
+}
+
+.experience-section-title .section-kicker,
+.reward-section-title .section-kicker {
+  color: #111827 !important;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+}
+
+.hero-main-title {
+  text-wrap: balance;
+}
+
+.bonus-score {
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.registration-box {
+  background:
+    radial-gradient(circle at 15% 18%, rgba(249, 115, 22, 0.12), transparent 26%),
+    linear-gradient(180deg, #f7f7f7, #ffffff);
+}
+
+@media (max-width: 640px) {
+  .figma-header-container {
+    width: min(calc(100% - 1.5rem), 1780px);
+  }
+
+  .hero-main-title {
+    font-size: clamp(2.8rem, 14vw, 4.7rem) !important;
+  }
+
+  body .champion-trophy {
+    height: 190px !important;
+    bottom: 1.25rem !important;
+  }
+}
+
+/* New Figma SVG replacement pass: reward graphics and exact exported labels. */
+.reward-title-exact img,
+.reward-card-svg,
+.launch-benefit img {
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.reward-svg-main,
+.reward-svg-side-card {
+  isolation: isolate;
+  position: relative;
+}
+
+.reward-svg-main::before,
+.reward-svg-side-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(115deg, transparent 0 44%, rgba(255, 255, 255, 0.24) 50%, transparent 58%),
+    radial-gradient(circle at 16% 80%, rgba(249, 115, 22, 0.12), transparent 32%);
+  transform: translateX(-120%);
+  animation: reward-card-shine 7.2s ease-in-out infinite;
+}
+
+.reward-card-svg {
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 18px 24px rgba(124, 45, 18, 0.1));
+}
+
+.reward-card-svg--first {
+  max-width: min(100%, 520px);
+}
+
+.reward-card-svg--side {
+  max-width: min(100%, 640px);
+}
+
+.reward-svg-side-card {
+  min-height: 150px;
+  display: grid;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .reward-svg-side-card {
+    min-height: 184px;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-svg-layout {
+    gap: 1rem !important;
+  }
+
+  .reward-svg-main,
+  .reward-svg-side-card {
+    border-radius: 1.55rem !important;
+    padding: 0.85rem !important;
+  }
+
+  .reward-card-svg--first {
+    max-width: 330px;
+  }
+}
+
+
+/* Exact SVG asset replacement cleanup: show newly supplied SVGs as-is. */
+.section-kicker-svg {
+  display: block;
+  object-fit: contain;
+}
+
+.reward-svg-main,
+.reward-svg-side-card {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.reward-svg-main::before,
+.reward-svg-side-card::before {
+  display: none !important;
+}
+
+.reward-card-svg {
+  filter: none !important;
+  width: 100%;
+}
+
+.reward-card-svg--first {
+  max-width: min(100%, 520px);
+}
+
+.reward-card-svg--side {
+  max-width: min(100%, 697px);
+}
+
+.reward-title-exact img:first-child {
+  max-width: min(100%, 455px);
+}
+
+.reward-title-exact img:nth-child(2) {
+  max-width: min(100%, 320px);
+}
+
+@media (max-width: 640px) {
+  .section-kicker-svg {
+    max-width: min(70vw, 230px) !important;
+  }
+
+  .reward-card-svg--first {
+    max-width: 360px;
+  }
+}
+
+/* Final alignment and replacement-asset polish */
+@layer components {
+  .container-x,
+  .figma-header-container,
+  .figma-hero-container {
+    width: min(calc(100% - clamp(5.5rem, 7vw, 8.75rem)), 1240px);
+    margin-inline: auto;
+  }
+
+  @media (max-width: 768px) {
+    .container-x,
+    .figma-header-container,
+    .figma-hero-container {
+      width: min(calc(100% - 2rem), 1240px);
+    }
+  }
+}
+
+.reward-classic-card {
+  contain: paint;
+}
+
+.reward-classic-card img {
+  max-width: 100%;
+}
+
+.reward-classic-card--first .champion-trophy {
+  transform-origin: 50% 80%;
+}
+
+.bonus-card {
+  overflow: visible;
+}
+
+.bonus-score {
+  max-width: 100%;
+  overflow: visible;
+  text-wrap: balance;
+}
+
+.registration-box {
+  max-width: min(100%, 1060px);
+}
+
+@media (max-width: 640px) {
+  .reward-classic-card--first {
+    min-height: 310px;
+  }
+
+  .reward-classic-card--first .champion-trophy {
+    right: 1rem;
+    bottom: 1rem;
+    width: 45%;
+  }
+}
+
+/* FINAL client pass: professional alignment, readable static race cards, responsive rewards. */
+@layer components {
+  .container-x,
+  .figma-header-container,
+  .figma-hero-container {
+    width: min(calc(100% - clamp(2rem, 7vw, 7.25rem)), 1240px) !important;
+    margin-inline: auto !important;
+  }
+
+  @media (max-width: 1024px) {
+    .container-x,
+    .figma-header-container,
+    .figma-hero-container {
+      width: min(calc(100% - 2rem), 1240px) !important;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .container-x,
+    .figma-header-container,
+    .figma-hero-container {
+      width: min(calc(100% - 1.25rem), 1240px) !important;
+    }
+  }
+}
+
+/* Remove the unwanted white pill/box around the 03 CHẶNG ĐUA heading only. */
+.stages-section .stage-title-no-box {
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Make small section labels like TỔNG QUAN / ĐIỂM ĐẾN larger and closer to the SVG title. */
+.design-section-title .section-kicker {
+  margin-bottom: 0.15rem !important;
+  color: #0f172a !important;
+  font-size: clamp(1.15rem, 2.25vw, 1.8rem) !important;
+  line-height: 1 !important;
+  letter-spacing: 0.015em !important;
+}
+
+.experience-section-title .section-kicker {
+  font-size: clamp(1.25rem, 2.5vw, 2rem) !important;
+  letter-spacing: 0.025em !important;
+}
+
+.design-section-title::after {
+  margin-top: 0.65rem !important;
+}
+
+/* Keep Figma SVG headings crisp and let them resize instead of cropping on narrow tabs. */
+.section-heading-svg {
+  width: 100% !important;
+  max-width: min(100%, var(--heading-svg-width, 100%));
+}
+
+.section-title-box {
+  max-width: min(100%, 980px) !important;
+}
+
+@media (max-width: 900px) {
+  .section-title-box {
+    width: min(100%, 92vw) !important;
+  }
+  .section-heading-svg {
+    max-height: none !important;
+  }
+}
+
+/* Race stage cards: remove distracting motion/hover shifts, make headings larger and stable. */
+.stage-sequence {
+  padding-left: 0 !important;
+}
+
+.stage-sequence::before,
+.stage-card::before {
+  display: none !important;
+}
+
+.stage-card-static,
+.stage-card-static * {
+  transition-property: color, background-color, border-color, box-shadow, opacity, filter !important;
+}
+
+.stage-card-static:hover {
+  transform: none !important;
+}
+
+.stage-card-static .stage-visual-image,
+.stage-card-static:hover .stage-visual-image {
+  transform: none !important;
+}
+
+.stage-heading {
+  font-size: clamp(1.45rem, 2.1vw, 2.05rem) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -0.035em !important;
+  white-space: nowrap !important;
+}
+
+.stage-copy-panel .fit-copy {
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem) !important;
+  line-height: 1.75 !important;
+}
+
+@media (max-width: 760px) {
+  .stage-heading {
+    white-space: normal !important;
+    text-wrap: balance !important;
+    font-size: clamp(1.38rem, 6vw, 1.8rem) !important;
+  }
+}
+
+/* More festive but controlled confetti placement. */
+.asset-decoration {
+  max-width: 100%;
+}
+
+/* Score and bonus cards: prevent clipped +20đ/chặng and keep the table readable on mobile. */
+.bonus-card {
+  overflow: visible !important;
+}
+
+.bonus-score {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  font-size: clamp(0.95rem, 1.15vw, 1.22rem) !important;
+}
+
+.bonus-card h4 {
+  font-size: clamp(0.72rem, 0.86vw, 0.88rem) !important;
+}
+
+.bonus-card p:not(.bonus-score) {
+  font-size: clamp(0.72rem, 0.86vw, 0.86rem) !important;
+  line-height: 1.55 !important;
+}
+
+.score-cell--value span {
+  animation: score-value-pulse 3.4s ease-in-out infinite !important;
+}
+
+@media (max-width: 640px) {
+  .score-table-scroll {
+    overflow-x: auto !important;
+  }
+  .score-table-grid {
+    min-width: 620px !important;
+  }
+}
+
+/* Rewards: restore connected, polished card layout with animated count-up values. */
+.reward-layout {
+  max-width: 1060px;
+  margin-inline: auto;
+}
+
+.reward-classic-card {
+  overflow: hidden !important;
+  contain: paint;
+}
+
+.reward-classic-card img {
+  max-width: 100%;
+}
+
+.reward-count-main,
+.reward-count-side {
+  text-shadow: 0 8px 18px rgba(124, 45, 18, 0.1);
+}
+
+.reward-medal-icon {
+  width: clamp(4.6rem, 7vw, 6.5rem) !important;
+  height: clamp(4.6rem, 7vw, 6.5rem) !important;
+  max-width: none !important;
+  object-fit: contain;
+}
+
+.reward-classic-card--first .champion-trophy {
+  width: min(42%, 260px) !important;
+  height: auto !important;
+  bottom: clamp(1.4rem, 3vw, 2.2rem) !important;
+  right: clamp(1rem, 3vw, 2.2rem) !important;
+}
+
+@media (max-width: 1023px) {
+  .reward-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .reward-classic-card--first {
+    min-height: 370px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .reward-classic-card--first {
+    min-height: 330px !important;
+    padding: 1.25rem !important;
+  }
+  .reward-classic-card--first .champion-trophy {
+    width: 43% !important;
+    right: 0.9rem !important;
+    bottom: 1rem !important;
+  }
+  .reward-medal-icon {
+    width: 4.5rem !important;
+    height: 4.5rem !important;
+  }
+}
+
+/* Registration block: move as final CTA, one clean box, one-time celebration effect. */
+#registration {
+  background: #eeeeee !important;
+  padding-top: clamp(3rem, 6vw, 5rem) !important;
+  padding-bottom: clamp(3rem, 6vw, 5rem) !important;
+}
+
+.registration-box {
+  position: relative;
+  max-width: min(100%, 1120px) !important;
+  background: transparent !important;
+}
+
+.registration-box::before,
+.registration-box::after {
+  position: absolute;
+  z-index: 2;
+  width: 9px;
+  height: 9px;
+  pointer-events: none;
+  content: "";
+  border-radius: 999px;
+  opacity: 0;
+  box-shadow:
+    0 -42px 0 #ff6b00,
+    32px -26px 0 #0ea5e9,
+    -28px -18px 0 #facc15,
+    42px 20px 0 #ec4899,
+    -38px 24px 0 #22c55e,
+    0 46px 0 #ff6b00;
+  animation: one-shot-burst 1.6s ease-out 0.35s 1 both;
+}
+
+.registration-box::before {
+  top: 28%;
+  left: 14%;
+}
+
+.registration-box::after {
+  top: 30%;
+  right: 14%;
+}
+
+@keyframes one-shot-burst {
+  0% { opacity: 0; transform: scale(0.2) rotate(0deg); }
+  15% { opacity: 1; }
+  80% { opacity: 0.92; transform: scale(1.05) rotate(18deg); }
+  100% { opacity: 0; transform: scale(1.2) rotate(24deg); }
+}
+
+/* Footer: remove heavy bottom box, keep information + thin orange base line. */
+footer {
+  box-shadow: 0 -1px 0 rgba(15, 23, 42, 0.08) inset;
+}
+
+footer .container-x {
+  width: min(calc(100% - clamp(2rem, 7vw, 7.25rem)), 1240px) !important;
+}
+
+/* FINAL polish pass requested after preview: keep everything else, fix score/reward/registration only. */
+.score-heading-row img[alt="Điểm số chiến thuật"] {
+  margin-top: 0 !important;
+}
+
+.bonus-system-label {
+  filter: invert(1) brightness(2.25) contrast(1.16) drop-shadow(0 8px 14px rgba(255,255,255,0.12)) !important;
+  opacity: 0.98;
+}
+
+.comeback-title-box {
+  min-height: 100%;
+}
+
+.comeback-title-box p {
+  margin-top: auto !important;
+}
+
+.comeback-layout {
+  align-items: stretch !important;
+}
+
+.bonus-grid {
+  align-items: stretch !important;
+}
+
+.bonus-card {
+  justify-content: flex-start !important;
+  min-height: 190px !important;
+  padding: clamp(0.9rem, 1.1vw, 1.15rem) !important;
+}
+
+.bonus-card > div {
+  min-height: 78px;
+}
+
+.bonus-score {
+  display: block;
+  font-size: clamp(1.1rem, 1.35vw, 1.42rem) !important;
+  line-height: 1 !important;
+}
+
+.bonus-card h4 {
+  margin-top: 0.55rem !important;
+  min-height: 2.1em;
+  font-size: clamp(0.78rem, 0.9vw, 0.95rem) !important;
+  line-height: 1.08 !important;
+}
+
+.bonus-card p:not(.bonus-score) {
+  margin-top: auto !important;
+  padding-top: 0.9rem;
+  font-size: clamp(0.76rem, 0.86vw, 0.9rem) !important;
+  line-height: 1.55 !important;
+}
+
+@media (max-width: 1279px) {
+  .comeback-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bonus-card {
+    min-height: 168px !important;
+  }
+}
+
+.reward-fireworks {
+  position: relative;
+  isolation: isolate;
+}
+
+.reward-fireworks::before,
+.reward-fireworks::after {
+  position: absolute;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  content: "";
+  border-radius: 999px;
+  opacity: 0;
+  box-shadow:
+    0 -54px 0 #ff6b00,
+    42px -34px 0 #0ea5e9,
+    -38px -28px 0 #facc15,
+    54px 14px 0 #ec4899,
+    -48px 24px 0 #22c55e,
+    6px 58px 0 #ff6b00,
+    76px 46px 0 #2563eb,
+    -72px 44px 0 #f97316;
+  animation: reward-one-shot-burst 1.75s ease-out 0.4s 1 both;
+}
+
+.reward-fireworks::before {
+  top: 52%;
+  left: 23%;
+}
+
+.reward-fireworks::after {
+  top: 48%;
+  right: 22%;
+  animation-delay: 0.58s;
+}
+
+@keyframes reward-one-shot-burst {
+  0% { opacity: 0; transform: scale(0.15) rotate(0deg); }
+  18% { opacity: 1; }
+  78% { opacity: 0.95; transform: scale(1.05) rotate(18deg); }
+  100% { opacity: 0; transform: scale(1.25) rotate(26deg); }
+}
+
+.reward-classic-card {
+  contain: layout paint;
+}
+
+.reward-classic-card--first {
+  min-height: clamp(360px, 36vw, 455px) !important;
+}
+
+.reward-rank-first {
+  width: min(100%, 290px) !important;
+  max-height: 64px;
+  object-fit: contain;
+  object-position: left top;
+}
+
+.reward-count-main {
+  margin-bottom: clamp(0.4rem, 1.5vw, 1rem) !important;
+}
+
+.reward-classic-card--first .champion-trophy {
+  width: min(44%, 270px) !important;
+  right: clamp(1rem, 3.2vw, 2.45rem) !important;
+  bottom: clamp(1.35rem, 2.8vw, 2.35rem) !important;
+}
+
+.reward-side-card {
+  gap: clamp(0.9rem, 1.25vw, 1.35rem) !important;
+}
+
+.reward-rank-side {
+  width: min(100%, 210px) !important;
+  max-height: 58px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.reward-count-side {
+  font-size: clamp(1.65rem, 2.85vw, 2.28rem) !important;
+  line-height: 0.96 !important;
+}
+
+.reward-medal-icon {
+  width: clamp(4.65rem, 6vw, 5.85rem) !important;
+  height: clamp(4.65rem, 6vw, 5.85rem) !important;
+}
+
+@media (min-width: 1024px) {
+  .reward-layout {
+    grid-template-columns: minmax(0, 1.03fr) minmax(0, 0.97fr) !important;
+  }
+
+  .reward-side-card {
+    min-height: 145px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-side-card {
+    flex-direction: row !important;
+    min-height: 132px !important;
+  }
+
+  .reward-rank-side {
+    max-width: 170px !important;
+  }
+
+  .reward-count-side {
+    font-size: clamp(1.45rem, 8vw, 2rem) !important;
+  }
+}
+
+#registration {
+  background: linear-gradient(180deg, #fff8ed 0%, #f3f4f6 100%) !important;
+  padding-top: clamp(2.5rem, 5vw, 4.25rem) !important;
+}
+
+.registration-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.registration-inner::before {
+  position: absolute;
+  inset: -30% auto auto -10%;
+  width: 55%;
+  height: 120%;
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(circle, rgba(249,115,22,0.12), transparent 58%);
+}
+
+.registration-inner::after {
+  position: absolute;
+  inset: auto -16% -40% auto;
+  width: 58%;
+  height: 125%;
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(circle, rgba(14,165,233,0.10), transparent 58%);
+}
+
+/* FINAL label sizing request: make TỔNG QUAN and ĐIỂM ĐẾN visually match HÀNH TRÌNH label size. */
+.design-section-title .section-kicker,
+.experience-section-title .section-kicker {
+  font-size: clamp(2rem, 4.2vw, 2.6rem) !important;
+  line-height: 1 !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.02em !important;
+  padding: 0.15rem 0.55rem !important;
+  margin-bottom: 0.35rem !important;
+}
+
+@media (max-width: 640px) {
+  .design-section-title .section-kicker,
+  .experience-section-title .section-kicker {
+    font-size: clamp(1.45rem, 7vw, 2rem) !important;
+    padding-inline: 0.35rem !important;
+  }
+}
+
+/* Final requested polish: align bonus cards, center main prize copy, stronger reward fireworks, CTA hotline text. */
+.comeback-panel .bonus-grid {
+  align-items: stretch !important;
+}
+
+.comeback-panel .bonus-card {
+  display: grid !important;
+  grid-template-rows: auto auto 1fr !important;
+  min-height: 190px !important;
+  height: 100% !important;
+  align-content: start !important;
+  justify-content: stretch !important;
+  padding: clamp(1rem, 1.15vw, 1.18rem) !important;
+}
+
+.comeback-panel .bonus-card > div {
+  min-height: 76px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.comeback-panel .bonus-score {
+  display: block !important;
+  min-height: 1.15em !important;
+  font-size: clamp(1.08rem, 1.25vw, 1.32rem) !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.comeback-panel .bonus-card h4 {
+  min-height: 2.2em !important;
+  margin-top: 0.55rem !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  font-size: clamp(0.78rem, 0.86vw, 0.92rem) !important;
+  line-height: 1.1 !important;
+}
+
+.comeback-panel .bonus-card p:not(.bonus-score) {
+  margin-top: 0.85rem !important;
+  padding-top: 0 !important;
+  align-self: start !important;
+  font-size: clamp(0.78rem, 0.86vw, 0.9rem) !important;
+  line-height: 1.55 !important;
+}
+
+.reward-classic-card--first > .relative.z-10 {
+  max-width: 46% !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.reward-classic-card--first .reward-count-main {
+  width: 100% !important;
+  margin: auto 0 clamp(0.8rem, 2vw, 1.55rem) !important;
+  text-align: center !important;
+}
+
+.reward-classic-card--first .reward-count-main p:first-child {
+  font-size: clamp(2.65rem, 4.5vw, 3.65rem) !important;
+}
+
+.reward-classic-card--first .reward-count-main p:nth-child(2) {
+  font-size: clamp(2.25rem, 3.8vw, 3.05rem) !important;
+}
+
+.reward-classic-card--first .champion-trophy {
+  right: clamp(1.2rem, 4vw, 3rem) !important;
+  bottom: clamp(1.3rem, 3.1vw, 2.55rem) !important;
+  width: min(45%, 285px) !important;
+}
+
+.reward-layout {
+  position: relative !important;
+  isolation: isolate;
+}
+
+.reward-layout::before,
+.reward-layout::after {
+  position: absolute;
+  z-index: 4;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  content: "";
+  border-radius: 999px;
+  opacity: 0;
+  box-shadow:
+    0 -72px 0 #ff6b00,
+    58px -50px 0 #facc15,
+    -56px -44px 0 #0ea5e9,
+    78px -4px 0 #22c55e,
+    -76px 10px 0 #ec4899,
+    36px 62px 0 #2563eb,
+    -42px 68px 0 #f97316,
+    92px 78px 0 #facc15,
+    -96px 88px 0 #22c55e;
+  animation: reward-burst-and-fall 2.35s cubic-bezier(.16,1,.3,1) 0.35s 1 both;
+}
+
+.reward-layout::before {
+  top: 18%;
+  left: 30%;
+}
+
+.reward-layout::after {
+  top: 20%;
+  right: 25%;
+  animation-delay: 0.68s;
+}
+
+@keyframes reward-burst-and-fall {
+  0% { opacity: 0; transform: translateY(0) scale(0.15) rotate(0deg); }
+  15% { opacity: 1; }
+  48% { opacity: 1; transform: translateY(0) scale(1.08) rotate(24deg); }
+  100% { opacity: 0; transform: translateY(95px) scale(0.88) rotate(72deg); }
+}
+
+.cta-pattern a[href^="tel:"] {
+  white-space: normal !important;
+  text-transform: none !important;
+  line-height: 1.35 !important;
+  padding-inline: clamp(1.25rem, 3vw, 2rem) !important;
+}
+
+.cta-pattern a[href^="tel:"] span {
+  display: inline-block;
+}
+
+@media (max-width: 640px) {
+  .reward-classic-card--first > .relative.z-10 {
+    max-width: 52% !important;
+  }
+
+  .reward-classic-card--first .champion-trophy {
+    width: min(48%, 210px) !important;
+  }
+
+  .comeback-panel .bonus-card {
+    min-height: 160px !important;
+  }
+}
+
+
+/* Final compact header: reduce vertical space without changing layout. */
+@layer components {
+  .figma-header-container {
+    min-height: 0;
+  }
+}
+
+/* Final reward typography polish for Vercel-ready build */
+.reward-rank-text {
+  margin: 0 !important;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.045em !important;
+  line-height: 0.95 !important;
+  color: #ed6600 !important;
+  white-space: nowrap !important;
+  text-transform: none !important;
+  text-wrap: nowrap !important;
+}
+
+.reward-rank-text--first {
+  font-size: clamp(2.15rem, 3.65vw, 3.25rem) !important;
+  transform: translateY(-0.25rem);
+}
+
+.reward-rank-text--side {
+  font-size: clamp(1.55rem, 2.35vw, 2.08rem) !important;
+}
+
+.reward-side-card .relative.z-10.min-w-0.flex-1 {
+  display: flex !important;
+  min-width: 0 !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+.reward-count-side {
+  font-size: clamp(1.85rem, 2.75vw, 2.45rem) !important;
+  font-weight: 950 !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.055em !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+}
+
+.reward-first-content {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: clamp(1rem, 1.7vw, 1.65rem) !important;
+  transform: translateY(-0.65rem);
+}
+
+.reward-classic-card--first .reward-count-main {
+  margin: 0 !important;
+  transform: translateY(-0.45rem);
+}
+
+.reward-money-first {
+  font-size: clamp(2.95rem, 4.75vw, 4rem) !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+}
+
+.reward-cup-text {
+  font-size: clamp(1.7rem, 3vw, 2.55rem) !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+}
+
+.reward-classic-card--first .champion-trophy {
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-47%) !important;
+  width: min(45%, 290px) !important;
+}
+
+@media (max-width: 900px) {
+  .reward-rank-text--first {
+    font-size: clamp(1.75rem, 7vw, 2.65rem) !important;
+  }
+
+  .reward-money-first {
+    font-size: clamp(2.35rem, 9vw, 3.35rem) !important;
+  }
+
+  .reward-cup-text {
+    font-size: clamp(1.35rem, 5.2vw, 2rem) !important;
+  }
+
+  .reward-rank-text--side {
+    font-size: clamp(1.25rem, 5vw, 1.8rem) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-classic-card--first {
+    min-height: 315px !important;
+  }
+
+  .reward-first-content {
+    max-width: 58% !important;
+    transform: translateY(-0.25rem);
+  }
+
+  .reward-classic-card--first .champion-trophy {
+    width: min(44%, 185px) !important;
+    right: 0.85rem !important;
+  }
+
+  .reward-rank-text--first {
+    font-size: clamp(1.45rem, 6.8vw, 2.05rem) !important;
+  }
+
+  .reward-money-first {
+    font-size: clamp(2rem, 8.6vw, 2.85rem) !important;
+  }
+
+  .reward-cup-text {
+    font-size: clamp(1.05rem, 4.8vw, 1.55rem) !important;
+  }
+
+  .reward-rank-text--side {
+    font-size: clamp(1.08rem, 5vw, 1.45rem) !important;
+  }
+
+  .reward-count-side {
+    font-size: clamp(1.45rem, 7vw, 2rem) !important;
+  }
+}
+
+/* Final reward typography/layout correction: match Figma card balance, keep labels one-line. */
+.reward-classic-card--first {
+  align-items: stretch !important;
+}
+
+.reward-classic-card--first .reward-first-content,
+.reward-classic-card--first > .relative.z-10 {
+  max-width: 52% !important;
+  min-height: 100% !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: clamp(2.3rem, 5.2vw, 4.8rem) !important;
+  text-align: left !important;
+}
+
+.reward-rank-text {
+  font-family: "Be Vietnam Pro", Inter, ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.045em !important;
+  line-height: 0.98 !important;
+  white-space: nowrap !important;
+  text-transform: none !important;
+}
+
+.reward-rank-text--first {
+  color: #f26a21 !important;
+  font-size: clamp(2.2rem, 4.15vw, 4rem) !important;
+}
+
+.reward-classic-card--first .reward-count-main {
+  width: auto !important;
+  margin: 0 !important;
+  text-align: left !important;
+  transform: translateY(clamp(-1.25rem, -1.8vw, -0.55rem));
+}
+
+.reward-classic-card--first .reward-money-first,
+.reward-classic-card--first .reward-count-main p:first-child {
+  color: #334155 !important;
+  font-size: clamp(2.6rem, 4.2vw, 3.8rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.reward-classic-card--first .reward-cup-text,
+.reward-classic-card--first .reward-count-main p:nth-child(2) {
+  color: #334155 !important;
+  margin-top: 0.7rem !important;
+  font-size: clamp(2.15rem, 3.45vw, 3.15rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.reward-classic-card--first .champion-trophy {
+  width: min(46%, 305px) !important;
+  right: clamp(1rem, 3.2vw, 2.6rem) !important;
+  bottom: clamp(1.05rem, 2.4vw, 2rem) !important;
+}
+
+.reward-side-card {
+  display: grid !important;
+  grid-template-columns: clamp(4.6rem, 6.2vw, 6rem) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: clamp(1rem, 1.8vw, 1.6rem) !important;
+}
+
+.reward-side-card .reward-medal-icon {
+  justify-self: center !important;
+  width: clamp(4.25rem, 5.9vw, 5.8rem) !important;
+  height: clamp(4.25rem, 5.9vw, 5.8rem) !important;
+}
+
+.reward-rank-text--side {
+  display: block !important;
+  width: 100% !important;
+  color: #3f3f46 !important;
+  font-size: clamp(1.42rem, 2.35vw, 2.25rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.055em !important;
+  white-space: nowrap !important;
+}
+
+.reward-side-card .reward-count-side {
+  margin-top: 0.35rem !important;
+  color: #f05a0a !important;
+  font-size: clamp(1.6rem, 2.7vw, 2.65rem) !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.055em !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 1023px) {
+  .reward-classic-card--first .reward-first-content,
+  .reward-classic-card--first > .relative.z-10 {
+    max-width: 53% !important;
+    gap: clamp(2rem, 7vw, 4rem) !important;
+  }
+
+  .reward-rank-text--side {
+    font-size: clamp(1.45rem, 4.5vw, 2.15rem) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-classic-card--first .reward-first-content,
+  .reward-classic-card--first > .relative.z-10 {
+    max-width: 55% !important;
+    gap: clamp(1.7rem, 8vw, 3.1rem) !important;
+  }
+
+  .reward-rank-text--first {
+    font-size: clamp(1.65rem, 8.2vw, 2.55rem) !important;
+  }
+
+  .reward-classic-card--first .reward-money-first,
+  .reward-classic-card--first .reward-count-main p:first-child {
+    font-size: clamp(1.95rem, 8vw, 2.75rem) !important;
+  }
+
+  .reward-classic-card--first .reward-cup-text,
+  .reward-classic-card--first .reward-count-main p:nth-child(2) {
+    font-size: clamp(1.55rem, 6.8vw, 2.25rem) !important;
+  }
+
+  .reward-side-card {
+    grid-template-columns: 4.1rem minmax(0, 1fr) !important;
+    gap: 0.85rem !important;
+  }
+
+  .reward-rank-text--side {
+    font-size: clamp(1.02rem, 5.2vw, 1.55rem) !important;
+    letter-spacing: -0.05em !important;
+  }
+
+  .reward-side-card .reward-count-side {
+    font-size: clamp(1.3rem, 6.4vw, 2rem) !important;
+  }
+}
+
+/* FINAL client update: clean typography, clear logo, no overlapping prize text/cup, clean destination images/form. */
+header .figma-header-container img[alt="Xuan Cau Holdings"] {
+  height: 46px !important;
+  width: 58px !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 6px 12px rgba(124,45,18,0.12)) !important;
+}
+
+@media (max-width: 640px) {
+  header .figma-header-container img[alt="Xuan Cau Holdings"] {
+    height: 40px !important;
+    width: 50px !important;
+  }
+}
+
+.comeback-clean-heading {
+  border-radius: 1.25rem;
+  background: rgba(255,255,255,0.08);
+  padding: clamp(1rem, 1.6vw, 1.25rem);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.09);
+}
+
+.bonus-system-text {
+  color: #f8fafc;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 8px 22px rgba(255,255,255,0.10);
+}
+
+.comeback-title-text {
+  margin-top: 0.75rem;
+  color: #fb923c;
+  font-size: clamp(1.85rem, 4vw, 3.6rem);
+  font-weight: 950;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-shadow: 0 14px 26px rgba(249,115,22,0.18);
+}
+
+.comeback-title-box p:not(.bonus-system-text):not(.comeback-title-text) {
+  background: rgba(255,255,255,0.94) !important;
+  color: #111827 !important;
+}
+
+.reward-first-balanced {
+  display: block !important;
+  min-height: clamp(360px, 36vw, 455px) !important;
+}
+
+.reward-first-balanced .reward-first-layout {
+  grid-template-columns: minmax(0, 0.95fr) minmax(170px, 1.05fr) !important;
+  align-items: center !important;
+}
+
+.reward-first-balanced .reward-first-copy {
+  max-width: none !important;
+  min-height: auto !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  text-align: left !important;
+  transform: none !important;
+}
+
+.reward-first-balanced .reward-rank-text--first {
+  color: #f26a21 !important;
+  font-size: clamp(2.15rem, 4.15vw, 3.85rem) !important;
+  line-height: 0.98 !important;
+  white-space: nowrap !important;
+  transform: none !important;
+}
+
+.reward-first-balanced .reward-count-main {
+  width: 100% !important;
+  margin: clamp(1.3rem, 2.8vw, 2rem) 0 0 !important;
+  text-align: left !important;
+  transform: none !important;
+}
+
+.reward-first-balanced .reward-money-first,
+.reward-first-balanced .reward-count-main p:first-child {
+  color: #334155 !important;
+  font-size: clamp(2.25rem, 4vw, 3.45rem) !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.055em !important;
+  white-space: nowrap !important;
+}
+
+.reward-first-balanced .reward-cup-text,
+.reward-first-balanced .reward-count-main p:nth-child(2) {
+  color: #334155 !important;
+  margin-top: 0.65rem !important;
+  font-size: clamp(1.72rem, 3vw, 2.55rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.reward-first-balanced .reward-first-trophy-wrap {
+  align-self: center !important;
+}
+
+.reward-first-balanced .champion-trophy,
+.reward-classic-card--first.reward-first-balanced .champion-trophy {
+  position: static !important;
+  inset: auto !important;
+  width: min(100%, 285px) !important;
+  max-width: 285px !important;
+  height: auto !important;
+  transform: none !important;
+  object-fit: contain !important;
+}
+
+.reward-rank-text--side {
+  color: #2f2f35 !important;
+  white-space: nowrap !important;
+}
+
+.reward-side-card .reward-count-side {
+  color: #f05a0a !important;
+}
+
+@media (max-width: 640px) {
+  .reward-first-balanced {
+    min-height: 410px !important;
+  }
+
+  .reward-first-balanced .reward-first-layout {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .reward-first-balanced .reward-first-copy {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .reward-first-balanced .reward-count-main {
+    text-align: center !important;
+    margin-top: 1rem !important;
+  }
+
+  .reward-first-balanced .reward-rank-text--first {
+    font-size: clamp(1.9rem, 9vw, 2.65rem) !important;
+  }
+
+  .reward-first-balanced .reward-money-first,
+  .reward-first-balanced .reward-count-main p:first-child {
+    font-size: clamp(2rem, 10vw, 2.95rem) !important;
+  }
+
+  .reward-first-balanced .reward-cup-text,
+  .reward-first-balanced .reward-count-main p:nth-child(2) {
+    font-size: clamp(1.55rem, 7vw, 2.15rem) !important;
+  }
+
+  .reward-first-balanced .champion-trophy,
+  .reward-classic-card--first.reward-first-balanced .champion-trophy {
+    max-width: 190px !important;
+  }
+}
+
+#registration .registration-inner {
+  background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,247,237,0.9) 48%, rgba(240,249,255,0.88)) !important;
+  border-color: rgba(249,115,22,0.18) !important;
+}
+
+#registration h2 {
+  color: #f05a0a !important;
+  text-shadow: none !important;
+}
+
+/* Final polish pass: bonus score panel and reward card alignment. */
+.comeback-title-box {
+  min-height: 0 !important;
+}
+
+.bonus-system-text {
+  color: #ffffff !important;
+  font-size: clamp(1.28rem, 2.1vw, 2rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.045em !important;
+  text-shadow: 0 10px 24px rgba(255, 255, 255, 0.12) !important;
+}
+
+.comeback-title-svg-main {
+  display: block;
+  max-width: 330px;
+  max-height: 112px;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 12px 22px rgba(249, 115, 22, 0.22));
+}
+
+.bonus-card {
+  align-self: stretch;
+}
+
+.bonus-card .bonus-title {
+  min-height: 2.15em;
+}
+
+.bonus-card .bonus-copy {
+  min-height: 6.1em;
+}
+
+.reward-first-new {
+  isolation: isolate;
+}
+
+.reward-rank-text {
+  font-family: "Be Vietnam Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  background: transparent !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+.reward-rank-text--first {
+  width: 100%;
+  color: #f36a16 !important;
+  font-size: clamp(2.25rem, 4.05vw, 4.15rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.055em !important;
+  white-space: nowrap;
+}
+
+.reward-first-body {
+  position: relative;
+}
+
+.reward-first-copy-new {
+  position: relative;
+  z-index: 4;
+  max-width: 260px;
+}
+
+.reward-money-first {
+  color: #334155 !important;
+  font-size: clamp(2rem, 3.2vw, 3.25rem) !important;
+  white-space: nowrap;
+}
+
+.reward-cup-text {
+  color: #334155 !important;
+  font-size: clamp(1.55rem, 2.55vw, 2.65rem) !important;
+}
+
+.reward-first-trophy-wrap-new {
+  position: relative;
+  min-height: 260px;
+}
+
+.trophy-gold-glow {
+  position: absolute;
+  inset: 12% 4% 0;
+  z-index: 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 55%, rgba(255, 215, 88, 0.48), transparent 55%),
+    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.58), transparent 36%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.champion-trophy-new {
+  max-width: clamp(185px, 24vw, 305px);
+  max-height: 340px;
+  filter:
+    saturate(1.16)
+    contrast(1.08)
+    drop-shadow(0 22px 26px rgba(92, 44, 0, 0.28))
+    drop-shadow(0 0 34px rgba(255, 212, 66, 0.42));
+}
+
+.reward-rank-text--side {
+  color: #343434 !important;
+  font-size: clamp(1.75rem, 3vw, 3.15rem) !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.055em !important;
+  white-space: nowrap;
+}
+
+.reward-count-side {
+  color: #f36a16 !important;
+  font-size: clamp(1.55rem, 2.55vw, 2.55rem) !important;
+  line-height: 0.95 !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.04em !important;
+  white-space: nowrap;
+}
+
+@media (max-width: 1023px) {
+  .reward-first-body {
+    grid-template-columns: 0.9fr 1.1fr !important;
+  }
+
+  .reward-first-copy-new {
+    max-width: 230px;
+  }
+
+  .champion-trophy-new {
+    max-width: clamp(165px, 32vw, 245px);
+  }
+}
+
+@media (max-width: 640px) {
+  .comeback-title-svg-main {
+    max-width: 290px;
+    max-height: 88px;
+  }
+
+  .bonus-card .bonus-title,
+  .bonus-card .bonus-copy {
+    min-height: 0;
+  }
+
+  .reward-first-balanced {
+    min-height: 420px !important;
+    padding: 1.25rem !important;
+  }
+
+  .reward-first-body {
+    grid-template-columns: 1fr !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+
+  .reward-rank-text--first {
+    font-size: clamp(2rem, 11vw, 3.1rem) !important;
+    white-space: nowrap;
+  }
+
+  .reward-first-copy-new {
+    order: 2;
+    max-width: 100%;
+    justify-self: center;
+    padding-bottom: 0 !important;
+    text-align: center;
+  }
+
+  .reward-first-trophy-wrap-new {
+    order: 1;
+    min-height: 185px;
+    align-items: center !important;
+    padding-bottom: 0 !important;
+  }
+
+  .champion-trophy-new {
+    max-width: 178px;
+    max-height: 190px;
+  }
+
+  .reward-money-first {
+    font-size: clamp(1.85rem, 9vw, 2.55rem) !important;
+  }
+
+  .reward-cup-text {
+    font-size: clamp(1.45rem, 7.5vw, 2.1rem) !important;
+  }
+
+  .reward-rank-text--side {
+    font-size: clamp(1.45rem, 6.4vw, 2.2rem) !important;
+  }
+
+  .reward-count-side {
+    font-size: clamp(1.35rem, 6.2vw, 2rem) !important;
+  }
+}
+
+/* Final client correction 2026-05-21: score heading and reward cup/text balance. */
+header .figma-header-container img[alt="Xuan Cau Holdings"] {
+  height: 52px !important;
+  width: 68px !important;
+  opacity: 1 !important;
+  filter:
+    brightness(1.08)
+    contrast(1.12)
+    saturate(1.08)
+    drop-shadow(0 7px 14px rgba(124, 45, 18, 0.16)) !important;
+}
+
+.comeback-title-box {
+  justify-content: center !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  ring: 0 !important;
+}
+
+.comeback-clean-heading {
+  width: 100% !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.bonus-system-text {
+  display: block !important;
+  color: #ffffff !important;
+  font-size: clamp(1.35rem, 1.8vw, 1.78rem) !important;
+  font-weight: 950 !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.055em !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+}
+
+.comeback-title-svg-main {
+  display: block !important;
+  width: 100% !important;
+  max-width: min(100%, 360px) !important;
+  max-height: 94px !important;
+  margin-top: 0.55rem !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+}
+
+.comeback-title-box p:not(.bonus-system-text):not(.comeback-title-text) {
+  margin-top: 1rem !important;
+  padding: 1rem !important;
+  font-size: clamp(0.78rem, 0.9vw, 0.9rem) !important;
+  line-height: 1.52 !important;
+}
+
+.comeback-panel .bonus-card {
+  min-height: 158px !important;
+  padding: clamp(0.9rem, 1vw, 1.05rem) !important;
+}
+
+.comeback-panel .bonus-card > div {
+  min-height: 62px !important;
+}
+
+.comeback-panel .bonus-card p:not(.bonus-score) {
+  margin-top: 0.65rem !important;
+  font-size: clamp(0.74rem, 0.82vw, 0.86rem) !important;
+  line-height: 1.48 !important;
+}
+
+.comeback-panel .bonus-card h4 {
+  min-height: 1.9em !important;
+  font-size: clamp(0.76rem, 0.82vw, 0.88rem) !important;
+}
+
+.reward-classic-card--first.reward-first-balanced {
+  min-height: clamp(390px, 35vw, 455px) !important;
+  padding: clamp(1.35rem, 2.1vw, 1.9rem) !important;
+}
+
+.reward-first-new {
+  height: 100% !important;
+}
+
+.reward-rank-text--first {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  color: #f36a16 !important;
+  font-size: clamp(2.25rem, 3.8vw, 3.85rem) !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.06em !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+}
+
+.reward-first-body {
+  grid-template-columns: minmax(0, 0.88fr) minmax(180px, 1.12fr) !important;
+  align-items: end !important;
+  gap: clamp(0.75rem, 1.6vw, 1.4rem) !important;
+}
+
+.reward-first-copy-new {
+  z-index: 4 !important;
+  max-width: 240px !important;
+  align-self: end !important;
+  justify-self: start !important;
+  padding-bottom: clamp(2.2rem, 5vw, 3.75rem) !important;
+  text-align: left !important;
+}
+
+.reward-money-first {
+  color: #334155 !important;
+  font-size: clamp(2.15rem, 3.35vw, 3.25rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.06em !important;
+  white-space: nowrap !important;
+}
+
+.reward-cup-text {
+  color: #334155 !important;
+  margin-top: 0.55rem !important;
+  font-size: clamp(1.55rem, 2.55vw, 2.45rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.reward-first-trophy-wrap-new {
+  z-index: 2 !important;
+  min-height: clamp(260px, 28vw, 335px) !important;
+  align-items: end !important;
+  justify-content: center !important;
+}
+
+.champion-trophy-new {
+  width: auto !important;
+  max-width: clamp(225px, 23vw, 320px) !important;
+  max-height: clamp(255px, 30vw, 360px) !important;
+  object-fit: contain !important;
+  filter:
+    saturate(1.16)
+    contrast(1.1)
+    drop-shadow(0 24px 28px rgba(92, 44, 0, 0.28))
+    drop-shadow(0 0 40px rgba(255, 212, 66, 0.5)) !important;
+}
+
+.trophy-gold-glow {
+  inset: 7% -4% 0 !important;
+  background:
+    radial-gradient(circle at 50% 52%, rgba(255, 214, 64, 0.56), transparent 56%),
+    radial-gradient(circle at 50% 32%, rgba(255, 255, 255, 0.58), transparent 34%) !important;
+  filter: blur(12px) !important;
+}
+
+.reward-rank-text--side {
+  color: #343434 !important;
+  font-size: clamp(1.48rem, 2.2vw, 2.3rem) !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.06em !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+}
+
+.reward-side-card .reward-count-side {
+  font-size: clamp(1.42rem, 2.25vw, 2.25rem) !important;
+  line-height: 0.95 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 1023px) {
+  .comeback-title-svg-main {
+    max-width: 330px !important;
+  }
+
+  .reward-first-body {
+    grid-template-columns: minmax(0, 0.84fr) minmax(165px, 1.16fr) !important;
+  }
+
+  .champion-trophy-new {
+    max-width: clamp(210px, 34vw, 295px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  header .figma-header-container img[alt="Xuan Cau Holdings"] {
+    height: 44px !important;
+    width: 58px !important;
+  }
+
+  .bonus-system-text {
+    font-size: clamp(1.15rem, 5.6vw, 1.65rem) !important;
+  }
+
+  .comeback-title-svg-main {
+    max-width: 300px !important;
+    max-height: 78px !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced {
+    min-height: 440px !important;
+  }
+
+  .reward-first-body {
+    grid-template-columns: 1fr !important;
+    gap: 0.2rem !important;
+  }
+
+  .reward-first-trophy-wrap-new {
+    order: 1 !important;
+    min-height: 205px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .champion-trophy-new {
+    max-width: 205px !important;
+    max-height: 220px !important;
+  }
+
+  .reward-first-copy-new {
+    order: 2 !important;
+    justify-self: center !important;
+    max-width: 100% !important;
+    padding-bottom: 0 !important;
+    text-align: center !important;
+  }
+
+  .reward-money-first {
+    font-size: clamp(2rem, 9vw, 2.75rem) !important;
+  }
+
+  .reward-cup-text {
+    font-size: clamp(1.45rem, 7vw, 2rem) !important;
+  }
+
+  .reward-rank-text--side {
+    font-size: clamp(1.1rem, 5.2vw, 1.55rem) !important;
+  }
+
+  .reward-side-card .reward-count-side {
+    font-size: clamp(1.25rem, 6.2vw, 1.8rem) !important;
+  }
+}
+
+/* FINAL requested fix: keep score panel centered and prevent prize cup/text overlap. */
+.comeback-clean-heading {
+  width: min(100%, 330px) !important;
+  margin-inline: auto !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: center !important;
+}
+
+.comeback-title-box {
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.bonus-system-text {
+  width: 100% !important;
+  margin: 0 auto 0.45rem !important;
+  color: #f8fafc !important;
+  font-size: clamp(1.15rem, 1.45vw, 1.55rem) !important;
+  line-height: 1 !important;
+  letter-spacing: -0.03em !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.comeback-title-svg-main {
+  width: 100% !important;
+  max-width: min(100%, 330px) !important;
+  margin-inline: auto !important;
+  object-position: center !important;
+}
+
+.comeback-title-box p:not(.bonus-system-text):not(.comeback-title-text) {
+  width: min(100%, 330px) !important;
+  margin-inline: auto !important;
+  text-align: left !important;
+}
+
+.reward-first-body {
+  grid-template-columns: minmax(0, 0.82fr) minmax(190px, 1.18fr) !important;
+  align-items: end !important;
+  gap: clamp(0.85rem, 2vw, 1.75rem) !important;
+}
+
+.reward-first-copy-new {
+  z-index: 5 !important;
+  max-width: 255px !important;
+  justify-self: start !important;
+  align-self: end !important;
+}
+
+.reward-first-trophy-wrap-new {
+  z-index: 2 !important;
+  justify-self: end !important;
+  align-self: end !important;
+  min-height: 270px !important;
+  padding-left: clamp(0.75rem, 2vw, 1.5rem) !important;
+  transform: translateX(clamp(0.85rem, 2.4vw, 2.3rem));
+}
+
+.champion-trophy-new {
+  max-width: clamp(225px, 25vw, 330px) !important;
+  max-height: 360px !important;
+}
+
+@media (max-width: 1023px) {
+  .reward-first-body {
+    grid-template-columns: minmax(0, 0.9fr) minmax(160px, 1.1fr) !important;
+  }
+
+  .reward-first-trophy-wrap-new {
+    transform: translateX(clamp(0.25rem, 2vw, 1rem));
+    min-height: 230px !important;
+  }
+
+  .champion-trophy-new {
+    max-width: clamp(190px, 34vw, 260px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .comeback-clean-heading,
+  .comeback-title-box p:not(.bonus-system-text):not(.comeback-title-text) {
+    width: min(100%, 300px) !important;
+  }
+
+  .bonus-system-text {
+    font-size: clamp(1.05rem, 5.2vw, 1.42rem) !important;
+  }
+
+  .reward-first-body {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+
+  .reward-first-copy-new {
+    order: 2 !important;
+    max-width: 100% !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+
+  .reward-first-trophy-wrap-new {
+    order: 1 !important;
+    justify-self: center !important;
+    min-height: 185px !important;
+    padding-left: 0 !important;
+    transform: none !important;
+  }
+
+  .champion-trophy-new {
+    max-width: 188px !important;
+    max-height: 200px !important;
+  }
+}
+
+/* FINAL micro-adjustment: move champion trophy to viewer's right and center first-prize title only. */
+.reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-body {
+  display: block !important;
+  position: relative !important;
+  min-height: clamp(300px, 27vw, 340px) !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: clamp(1.45rem, 3vw, 2.5rem) !important;
+  z-index: 4 !important;
+  width: min(46%, 210px) !important;
+  max-width: 210px !important;
+  padding-bottom: 0 !important;
+  text-align: left !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+  position: absolute !important;
+  right: clamp(-0.2rem, -0.4vw, 0rem) !important;
+  bottom: 0 !important;
+  z-index: 3 !important;
+  width: min(55%, 268px) !important;
+  height: clamp(255px, 25vw, 325px) !important;
+  min-height: 0 !important;
+  padding-left: 0 !important;
+  padding-bottom: 0 !important;
+  transform: none !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+  width: 100% !important;
+  max-width: 268px !important;
+  max-height: 325px !important;
+  object-fit: contain !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .trophy-gold-glow {
+  inset: 8% -8% -2% 0 !important;
+}
+
+@media (min-width: 1280px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    width: 205px !important;
+    max-width: 205px !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    width: 275px !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    max-width: 275px !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    width: min(46%, 190px) !important;
+    max-width: 190px !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    width: min(53%, 235px) !important;
+    height: clamp(230px, 31vw, 285px) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    max-width: 235px !important;
+    max-height: 285px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    gap: 0.8rem !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    position: relative !important;
+    order: 1 !important;
+    right: auto !important;
+    bottom: auto !important;
+    justify-self: center !important;
+    width: min(78%, 215px) !important;
+    height: auto !important;
+    justify-content: center !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    max-width: 205px !important;
+    max-height: 220px !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    position: relative !important;
+    order: 2 !important;
+    left: auto !important;
+    bottom: auto !important;
+    justify-self: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* FINAL STRICT CUP PLACEMENT: move trophy to viewer's right, keep first-prize text clear. */
+.reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+  text-align: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-body {
+  display: block !important;
+  position: relative !important;
+  min-height: clamp(305px, 27vw, 340px) !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: clamp(1.3rem, 2.5vw, 2.25rem) !important;
+  z-index: 5 !important;
+  width: clamp(150px, 36%, 178px) !important;
+  max-width: 178px !important;
+  padding-bottom: 0 !important;
+  text-align: left !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-money-first {
+  font-size: clamp(2rem, 3vw, 2.85rem) !important;
+  line-height: 0.94 !important;
+  letter-spacing: -0.06em !important;
+  white-space: nowrap !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-cup-text {
+  font-size: clamp(1.45rem, 2.2vw, 2.05rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+  position: absolute !important;
+  right: clamp(-4.8rem, -5vw, -2.6rem) !important;
+  bottom: 0 !important;
+  z-index: 3 !important;
+  width: clamp(238px, 54%, 292px) !important;
+  height: clamp(265px, 26vw, 332px) !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+  width: 100% !important;
+  max-width: 292px !important;
+  max-height: 332px !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 1023px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    width: clamp(145px, 37%, 170px) !important;
+    max-width: 170px !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    right: clamp(-3.4rem, -5vw, -1.7rem) !important;
+    width: clamp(220px, 55%, 258px) !important;
+    height: clamp(235px, 31vw, 290px) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    max-width: 258px !important;
+    max-height: 290px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    gap: 0.9rem !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    position: relative !important;
+    order: 1 !important;
+    right: auto !important;
+    bottom: auto !important;
+    justify-self: center !important;
+    width: min(78%, 220px) !important;
+    height: auto !important;
+    justify-content: center !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    max-width: 210px !important;
+    max-height: 225px !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    position: relative !important;
+    order: 2 !important;
+    left: auto !important;
+    bottom: auto !important;
+    justify-self: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* Client final pass: requested visual/content fixes, keep remaining layout unchanged. */
+header .figma-header-container img[alt="Xuan Cau Holdings"] {
+  margin-top: 6px !important;
+  opacity: 1 !important;
+  filter: saturate(1.12) contrast(1.12) drop-shadow(0 6px 12px rgba(124,45,18,0.18)) !important;
+}
+
+.experience-collage {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.28fr) minmax(0, 0.78fr);
+  grid-template-rows: repeat(2, minmax(190px, 1fr));
+  gap: clamp(0.9rem, 1.6vw, 1.35rem);
+  align-items: stretch;
+}
+
+.experience-card {
+  min-height: 190px;
+  border: 6px solid rgba(255,255,255,0.92);
+}
+
+.experience-card--left-top { grid-column: 1; grid-row: 1; }
+.experience-card--left-bottom { grid-column: 1; grid-row: 2; }
+.experience-card--featured { grid-column: 2; grid-row: 1 / span 2; min-height: 420px; }
+.experience-card--right-top { grid-column: 3; grid-row: 1; }
+.experience-card--right-bottom { grid-column: 3; grid-row: 2; }
+
+.experience-card-overlay {
+  pointer-events: none;
+}
+
+.experience-caption {
+  max-width: calc(100% - 0.25rem);
+}
+
+.experience-card--small .experience-caption-title {
+  font-size: clamp(0.78rem, 1.2vw, 1rem) !important;
+  font-weight: 650 !important;
+}
+
+.experience-card--small .experience-caption-copy {
+  font-size: clamp(0.66rem, 0.92vw, 0.78rem) !important;
+  line-height: 1.35 !important;
+}
+
+.experience-card--featured .experience-caption-title {
+  font-size: clamp(1rem, 1.8vw, 1.45rem) !important;
+  font-weight: 700 !important;
+}
+
+.experience-card--featured .experience-caption-copy {
+  font-size: clamp(0.78rem, 1vw, 0.95rem) !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 900px) {
+  .experience-collage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+
+  .experience-card,
+  .experience-card--left-top,
+  .experience-card--left-bottom,
+  .experience-card--featured,
+  .experience-card--right-top,
+  .experience-card--right-bottom {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 240px;
+  }
+
+  .experience-card--featured {
+    grid-column: 1 / -1;
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 560px) {
+  .experience-collage {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card,
+  .experience-card--featured {
+    min-height: 260px;
+  }
+}
+
+.reward-classic-card,
+.reward-side-card,
+.reward-classic-card--first {
+  overflow: hidden !important;
+}
+
+.reward-rank-text,
+.reward-rank-text--first,
+.reward-rank-text--side,
+.reward-count-side,
+.reward-money-first,
+.reward-cup-text {
+  font-weight: 750 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.reward-rank-text--first {
+  width: 100% !important;
+  text-align: center !important;
+  font-size: clamp(2rem, 3.6vw, 3.35rem) !important;
+}
+
+.reward-first-new {
+  gap: clamp(0.6rem, 1.2vw, 1rem) !important;
+}
+
+.reward-first-body {
+  grid-template-columns: minmax(0, 0.92fr) minmax(170px, 1.08fr) !important;
+  gap: clamp(1.25rem, 2.1vw, 2.2rem) !important;
+  align-items: end !important;
+}
+
+.reward-first-copy-new {
+  align-self: end !important;
+  padding-bottom: clamp(2.2rem, 4.8vw, 4.2rem) !important;
+  text-align: center !important;
+  transform: translateY(-0.2rem) !important;
+}
+
+.reward-first-copy-new .reward-money-first,
+.reward-first-copy-new .reward-cup-text {
+  color: #334155 !important;
+  display: block !important;
+  font-size: clamp(1.9rem, 3.1vw, 2.9rem) !important;
+  line-height: 1.03 !important;
+  white-space: normal !important;
+  text-align: center !important;
+}
+
+.reward-first-copy-new .reward-cup-text {
+  margin-top: 0.25rem !important;
+}
+
+.reward-first-trophy-wrap-new {
+  justify-content: center !important;
+  padding-bottom: clamp(0.6rem, 1.6vw, 1.25rem) !important;
+}
+
+.champion-trophy-new {
+  width: min(100%, 330px) !important;
+  max-height: clamp(235px, 30vw, 365px) !important;
+  filter:
+    saturate(1.1)
+    contrast(1.06)
+    drop-shadow(0 24px 28px rgba(124,45,18,0.22))
+    drop-shadow(0 0 46px rgba(250,204,21,0.34)) !important;
+}
+
+.trophy-gold-glow {
+  position: absolute;
+  inset: 14% 3% 8%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(250,204,21,0.34), rgba(250,204,21,0.08) 44%, transparent 68%);
+  filter: blur(8px);
+}
+
+.reward-side-card {
+  grid-template-columns: clamp(3.9rem, 5.5vw, 5.15rem) minmax(0, 1fr) !important;
+  gap: clamp(1rem, 1.6vw, 1.45rem) !important;
+  padding-inline: clamp(1.1rem, 1.7vw, 1.55rem) !important;
+}
+
+.reward-side-card .reward-medal-icon {
+  width: clamp(3.65rem, 5vw, 4.9rem) !important;
+  height: clamp(3.65rem, 5vw, 4.9rem) !important;
+}
+
+.reward-medal-icon--green {
+  filter: hue-rotate(105deg) saturate(1.18) contrast(1.05) drop-shadow(0 12px 18px rgba(22,101,52,0.15)) !important;
+}
+
+.reward-rank-text--side {
+  font-size: clamp(1.1rem, 1.82vw, 1.65rem) !important;
+  line-height: 1.08 !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+}
+
+.reward-side-card .reward-count-side {
+  font-size: clamp(1.2rem, 2.05vw, 1.85rem) !important;
+  line-height: 1.02 !important;
+  white-space: normal !important;
+}
+
+.launch-benefit {
+  overflow: hidden !important;
+}
+
+.launch-benefit-copy {
+  max-width: 760px;
+}
+
+.launch-benefit-copy span {
+  font-weight: 800;
+}
+
+#registration input::placeholder {
+  color: #9aa6bd !important;
+}
+
+@media (max-width: 780px) {
+  .reward-first-body {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .reward-first-copy-new {
+    order: 2;
+    padding-bottom: 0 !important;
+  }
+
+  .reward-first-trophy-wrap-new {
+    order: 1;
+    padding-bottom: 0 !important;
+  }
+
+  .champion-trophy-new {
+    max-height: 220px !important;
+    max-width: 230px !important;
+  }
+
+  .reward-side-card {
+    min-height: 118px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .reward-rank-text--first {
+    font-size: clamp(1.6rem, 8vw, 2.1rem) !important;
+  }
+
+  .reward-first-copy-new .reward-money-first,
+  .reward-first-copy-new .reward-cup-text {
+    font-size: clamp(1.45rem, 7vw, 2rem) !important;
+  }
+
+  .reward-rank-text--side {
+    font-size: clamp(0.98rem, 4.9vw, 1.32rem) !important;
+  }
+
+  .reward-side-card .reward-count-side {
+    font-size: clamp(1.02rem, 5.2vw, 1.45rem) !important;
+  }
+}
+
+/* Final client requested refinements: clearer experience collage and calmer hero title. */
+.hero-main-title {
+  font-weight: 700 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.04em !important;
+  font-size: clamp(2.9rem, 7.15vw, 6.35rem) !important;
+}
+
+.experience-collage {
+  width: min(100%, 1040px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.18fr) minmax(0, 0.9fr) !important;
+  grid-template-rows: repeat(2, minmax(205px, 1fr)) !important;
+  gap: clamp(1rem, 1.45vw, 1.25rem) !important;
+}
+
+.experience-card {
+  min-height: 205px !important;
+  border: 4px solid rgba(255,255,255,0.96) !important;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12) !important;
+}
+
+.experience-card::after {
+  content: "";
+  position: absolute;
+  inset: 46% 0 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(15,23,42,0), rgba(15,23,42,0.34) 46%, rgba(15,23,42,0.58));
+}
+
+.experience-card--featured {
+  min-height: 445px !important;
+}
+
+.experience-card-overlay {
+  bottom: 0 !important;
+  padding: 0 clamp(0.85rem, 1.2vw, 1.15rem) clamp(0.85rem, 1.2vw, 1.15rem) !important;
+}
+
+.experience-caption {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.58), 0 1px 2px rgba(15, 23, 42, 0.55);
+}
+
+.experience-card--small .experience-caption-title {
+  font-size: clamp(0.82rem, 1vw, 0.96rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.08 !important;
+}
+
+.experience-card--small .experience-caption-copy {
+  font-size: clamp(0.65rem, 0.78vw, 0.76rem) !important;
+  line-height: 1.32 !important;
+}
+
+.experience-card--featured .experience-caption-title {
+  font-size: clamp(1.08rem, 1.7vw, 1.42rem) !important;
+  font-weight: 720 !important;
+  line-height: 1.08 !important;
+}
+
+.experience-card--featured .experience-caption-copy {
+  font-size: clamp(0.76rem, 0.92vw, 0.92rem) !important;
+  line-height: 1.42 !important;
+}
+
+.reward-rank-text,
+.reward-rank-text--first,
+.reward-rank-text--side,
+.reward-count-side,
+.reward-money-first,
+.reward-cup-text {
+  font-weight: 680 !important;
+}
+
+.reward-side-card {
+  padding-inline: clamp(1.35rem, 2vw, 1.85rem) !important;
+  gap: clamp(1.15rem, 1.8vw, 1.65rem) !important;
+}
+
+.reward-rank-text--side {
+  font-size: clamp(1.04rem, 1.55vw, 1.42rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.reward-side-card .reward-count-side {
+  font-size: clamp(1.08rem, 1.75vw, 1.55rem) !important;
+  line-height: 1.08 !important;
+}
+
+.launch-benefit-copy {
+  font-weight: 500 !important;
+}
+
+.launch-benefit-copy span {
+  font-weight: 650 !important;
+}
+
+@media (max-width: 900px) {
+  .experience-collage {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important;
+  }
+
+  .experience-card,
+  .experience-card--featured {
+    min-height: 260px !important;
+  }
+
+  .experience-card--featured {
+    grid-column: 1 / -1 !important;
+    min-height: 360px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-main-title {
+    font-size: clamp(2.45rem, 12.5vw, 4.15rem) !important;
+    line-height: 1.08 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .experience-collage {
+    grid-template-columns: 1fr !important;
+  }
+
+  .experience-card,
+  .experience-card--featured {
+    min-height: 270px !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
+
+/* Header logo containment + Figma-like destination collage final patch. */
+html {
+  scroll-padding-top: 88px;
+}
+
+header .figma-header-container {
+  min-height: 4.4rem !important;
+}
+
+header .figma-header-container > button:first-child {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+header .figma-header-container img[alt="Xuan Cau Holdings"] {
+  height: 58px !important;
+  width: 74px !important;
+  max-height: calc(100% - 0.5rem) !important;
+  margin-top: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  opacity: 1 !important;
+  filter: saturate(1.16) contrast(1.12) brightness(1.04) drop-shadow(0 7px 14px rgba(124,45,18,0.18)) !important;
+}
+
+@media (min-width: 1024px) {
+  header .figma-header-container {
+    min-height: 4.75rem !important;
+  }
+
+  header .figma-header-container img[alt="Xuan Cau Holdings"] {
+    height: 64px !important;
+    width: 82px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  header .figma-header-container {
+    min-height: 4rem !important;
+  }
+
+  header .figma-header-container img[alt="Xuan Cau Holdings"] {
+    height: 52px !important;
+    width: 66px !important;
+  }
+}
+
+.experience-collage {
+  width: min(100%, 980px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(150px, 0.9fr) minmax(230px, 1.16fr) minmax(300px, 1.58fr) !important;
+  grid-template-rows: repeat(2, minmax(176px, 1fr)) !important;
+  gap: clamp(0.95rem, 1.35vw, 1.25rem) !important;
+  align-items: stretch !important;
+}
+
+.experience-card {
+  min-height: 176px !important;
+  border: 0 !important;
+  border-radius: 1.18rem !important;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.13) !important;
+  outline: 0 !important;
+  ring-width: 0 !important;
+}
+
+.experience-card--left-top,
+.experience-card--left-bottom {
+  grid-column: 1 !important;
+}
+
+.experience-card--left-top {
+  grid-row: 1 !important;
+}
+
+.experience-card--left-bottom {
+  grid-row: 2 !important;
+}
+
+.experience-card--featured {
+  grid-column: 2 !important;
+  grid-row: 1 / span 2 !important;
+  min-height: 372px !important;
+}
+
+.experience-card--right-top,
+.experience-card--right-bottom {
+  grid-column: 3 !important;
+  min-height: 176px !important;
+}
+
+.experience-card--right-top {
+  grid-row: 1 !important;
+}
+
+.experience-card--right-bottom {
+  grid-row: 2 !important;
+}
+
+.experience-card img {
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+.experience-card::after {
+  content: "";
+  position: absolute;
+  inset: 58% 0 0 !important;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(15,23,42,0), rgba(15,23,42,0.26) 46%, rgba(15,23,42,0.58)) !important;
+}
+
+.experience-card-overlay {
+  bottom: 0 !important;
+  padding: 0 clamp(0.72rem, 0.95vw, 0.95rem) clamp(0.7rem, 0.95vw, 0.95rem) !important;
+}
+
+.experience-caption {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  text-shadow: 0 2px 8px rgba(15, 23, 42, 0.62), 0 1px 2px rgba(15, 23, 42, 0.66) !important;
+}
+
+.experience-card--small .experience-caption-title,
+.experience-card--right-top .experience-caption-title,
+.experience-card--right-bottom .experience-caption-title {
+  font-size: clamp(0.78rem, 0.92vw, 0.92rem) !important;
+  font-weight: 650 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.015em !important;
+}
+
+.experience-card--small .experience-caption-copy,
+.experience-card--right-top .experience-caption-copy,
+.experience-card--right-bottom .experience-caption-copy {
+  margin-top: 0.18rem !important;
+  font-size: clamp(0.58rem, 0.68vw, 0.7rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.26 !important;
+}
+
+.experience-card--featured .experience-caption-title {
+  font-size: clamp(0.9rem, 1.15vw, 1.05rem) !important;
+  font-weight: 650 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.015em !important;
+}
+
+.experience-card--featured .experience-caption-copy {
+  margin-top: 0.2rem !important;
+  font-size: clamp(0.62rem, 0.72vw, 0.74rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.32 !important;
+}
+
+@media (max-width: 900px) {
+  .experience-collage {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important;
+  }
+
+  .experience-card,
+  .experience-card--left-top,
+  .experience-card--left-bottom,
+  .experience-card--featured,
+  .experience-card--right-top,
+  .experience-card--right-bottom {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    min-height: 240px !important;
+  }
+
+  .experience-card--featured {
+    grid-column: 1 / -1 !important;
+    min-height: 340px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .experience-collage {
+    grid-template-columns: 1fr !important;
+  }
+
+  .experience-card,
+  .experience-card--featured {
+    min-height: 260px !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
+
+/* Final small fix: header logo must be fully contained; race headings avoid touching borders. */
+html {
+  scroll-padding-top: 96px !important;
+}
+
+header .figma-header-container {
+  height: 5.25rem !important;
+  min-height: 5.25rem !important;
+  overflow: visible !important;
+}
+
+header .figma-header-container > button:first-child {
+  height: 100% !important;
+  min-width: 112px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+  overflow: visible !important;
+}
+
+header .figma-header-container img[alt="Xuan Cau Holdings"] {
+  width: 92px !important;
+  height: 76px !important;
+  max-width: 92px !important;
+  max-height: calc(5.25rem - 0.9rem) !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  opacity: 1 !important;
+  filter: saturate(1.18) contrast(1.16) brightness(1.05) drop-shadow(0 7px 14px rgba(124,45,18,0.2)) !important;
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 82px !important;
+  }
+
+  header .figma-header-container {
+    height: 4.45rem !important;
+    min-height: 4.45rem !important;
+  }
+
+  header .figma-header-container > button:first-child {
+    min-width: 88px !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+  }
+
+  header .figma-header-container img[alt="Xuan Cau Holdings"] {
+    width: 76px !important;
+    height: 61px !important;
+    max-height: calc(4.45rem - 0.8rem) !important;
+  }
+}
+
+/* Figma-matched destination collage: left small stack, center tall/narrow, right wide stack. */
+.experience-collage {
+  width: min(100%, 920px) !important;
+  grid-template-columns: minmax(168px, 0.82fr) minmax(230px, 1.04fr) minmax(304px, 1.42fr) !important;
+  grid-template-rows: repeat(2, minmax(168px, 176px)) !important;
+  gap: clamp(0.9rem, 1.15vw, 1.15rem) !important;
+}
+
+.experience-card {
+  min-height: 168px !important;
+  border-radius: 1rem !important;
+}
+
+.experience-card--featured {
+  min-height: 350px !important;
+}
+
+.experience-card--right-top,
+.experience-card--right-bottom {
+  min-height: 168px !important;
+}
+
+.experience-card-overlay {
+  padding: 0 clamp(0.7rem, 0.85vw, 0.85rem) clamp(0.62rem, 0.85vw, 0.8rem) !important;
+}
+
+.experience-caption-title {
+  font-weight: 550 !important;
+}
+
+.experience-caption-copy {
+  font-weight: 430 !important;
+}
+
+.stage-copy-panel {
+  overflow: hidden !important;
+}
+
+body .stage-heading,
+.stage-heading {
+  max-width: 100% !important;
+  font-size: clamp(1.26rem, 1.62vw, 1.64rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.025em !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+  overflow-wrap: normal !important;
+}
+
+@media (min-width: 1024px) {
+  body .stage-heading,
+  .stage-heading {
+    font-size: clamp(1.22rem, 1.48vw, 1.56rem) !important;
+  }
+}
+
+/* Final client micro-fix: keep header compact, logo contained, and journey headings readable. */
+html {
+  scroll-padding-top: 86px !important;
+}
+
+header .figma-header-container {
+  height: 4.65rem !important;
+  min-height: 4.65rem !important;
+  overflow: visible !important;
+}
+
+header .figma-header-container > button:first-child {
+  min-width: 98px !important;
+  padding-top: 0.38rem !important;
+  padding-bottom: 0.38rem !important;
+  align-items: center !important;
+}
+
+header .figma-header-container img[alt="Xuan Cau Holdings"] {
+  width: 84px !important;
+  height: 68px !important;
+  max-width: 84px !important;
+  max-height: calc(4.65rem - 0.76rem) !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+body .journey-heading,
+.journey-heading {
+  font-weight: 720 !important;
+  font-size: clamp(1.55rem, 2.35vw, 2.45rem) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.012em !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+}
+
+@media (min-width: 1024px) {
+  body .journey-heading,
+  .journey-heading {
+    font-size: clamp(1.55rem, 2.05vw, 2.25rem) !important;
+    line-height: 1.22 !important;
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 76px !important;
+  }
+
+  header .figma-header-container {
+    height: 4.05rem !important;
+    min-height: 4.05rem !important;
+  }
+
+  header .figma-header-container > button:first-child {
+    min-width: 82px !important;
+    padding-top: 0.34rem !important;
+    padding-bottom: 0.34rem !important;
+  }
+
+  header .figma-header-container img[alt="Xuan Cau Holdings"] {
+    width: 70px !important;
+    height: 56px !important;
+    max-height: calc(4.05rem - 0.68rem) !important;
+  }
+
+  body .journey-heading,
+  .journey-heading {
+    font-size: clamp(1.35rem, 5.5vw, 1.85rem) !important;
+    line-height: 1.2 !important;
+  }
+}
+
+.reward-medal-icon--green {
+  filter: hue-rotate(92deg) saturate(1.28) contrast(1.06) drop-shadow(0 12px 18px rgba(22,101,52,0.16)) !important;
+}
+
+/* Final alignment pass: keep fixed header from covering hero/anchors and align destination card copy. */
+:root {
+  --site-header-height: 4.65rem;
+  --site-header-safe-gap: 0.85rem;
+}
+
+html {
+  scroll-padding-top: calc(var(--site-header-height) + 1rem) !important;
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--site-header-height) + 1rem) !important;
+}
+
+.hero-gradient {
+  padding-top: calc(var(--site-header-height) + var(--site-header-safe-gap)) !important;
+}
+
+.figma-hero-container {
+  min-height: calc(100svh - var(--site-header-height) - var(--site-header-safe-gap)) !important;
+}
+
+/* Align destination collage captions by row: title-to-title and copy-to-copy. */
+.experience-card-overlay {
+  bottom: 0 !important;
+  display: flex !important;
+  align-items: flex-end !important;
+}
+
+.experience-caption {
+  display: grid !important;
+  grid-template-rows: auto auto !important;
+  align-content: end !important;
+  width: 100% !important;
+}
+
+.experience-caption-title {
+  display: flex !important;
+  align-items: flex-end !important;
+  min-height: 1.15em !important;
+  margin: 0 !important;
+}
+
+.experience-caption-copy {
+  display: block !important;
+  margin-top: 0.22rem !important;
+  min-height: 2.42em !important;
+  overflow: visible !important;
+}
+
+.experience-card--left-top .experience-caption-title,
+.experience-card--right-top .experience-caption-title {
+  min-height: 1.15em !important;
+}
+
+.experience-card--left-top .experience-caption-copy,
+.experience-card--right-top .experience-caption-copy {
+  min-height: 2.62em !important;
+}
+
+.experience-card--left-bottom .experience-caption-title,
+.experience-card--right-bottom .experience-caption-title,
+.experience-card--featured .experience-caption-title {
+  min-height: 1.15em !important;
+}
+
+.experience-card--left-bottom .experience-caption-copy,
+.experience-card--right-bottom .experience-caption-copy,
+.experience-card--featured .experience-caption-copy {
+  min-height: 2.62em !important;
+}
+
+/* Make the collage closer to the reference: center card taller/narrower, right cards wider, rows equal. */
+.experience-collage {
+  width: min(100%, 940px) !important;
+  grid-template-columns: minmax(168px, 0.86fr) minmax(235px, 1.02fr) minmax(318px, 1.5fr) !important;
+  grid-template-rows: repeat(2, 170px) !important;
+  gap: clamp(0.92rem, 1.18vw, 1.18rem) !important;
+}
+
+.experience-card--featured {
+  min-height: 356px !important;
+}
+
+.experience-card--right-top,
+.experience-card--right-bottom,
+.experience-card--left-top,
+.experience-card--left-bottom {
+  min-height: 170px !important;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --site-header-height: 4.25rem;
+    --site-header-safe-gap: 0.75rem;
+  }
+
+  .experience-caption-copy,
+  .experience-card--left-top .experience-caption-copy,
+  .experience-card--right-top .experience-caption-copy,
+  .experience-card--left-bottom .experience-caption-copy,
+  .experience-card--right-bottom .experience-caption-copy,
+  .experience-card--featured .experience-caption-copy {
+    min-height: auto !important;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --site-header-height: 4.05rem;
+    --site-header-safe-gap: 0.7rem;
+  }
+}
+
+/* Final reward first-prize alignment: center the title and push trophy toward the viewer's right edge only. */
+.reward-classic-card--first.reward-first-balanced .reward-first-new {
+  grid-template-rows: auto 1fr !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+  display: block !important;
+  width: 100% !important;
+  justify-self: center !important;
+  text-align: center !important;
+  margin-top: clamp(0.35rem, 0.9vw, 0.85rem) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  transform: none !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-body {
+  grid-template-columns: minmax(0, 0.78fr) minmax(240px, 1.32fr) !important;
+  gap: clamp(0.4rem, 1vw, 0.9rem) !important;
+  align-items: end !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+  justify-self: center !important;
+  max-width: 245px !important;
+  padding-bottom: clamp(2.2rem, 4.6vw, 4rem) !important;
+  transform: translateY(-0.1rem) !important;
+  z-index: 3 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+  justify-content: flex-end !important;
+  align-items: end !important;
+  padding-right: 0 !important;
+  margin-right: clamp(-0.95rem, -1vw, -0.45rem) !important;
+  padding-bottom: clamp(0.55rem, 1.35vw, 1.1rem) !important;
+  z-index: 2 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+  width: min(100%, 370px) !important;
+  max-height: clamp(255px, 31vw, 382px) !important;
+  object-position: right bottom !important;
+  transform: translateX(clamp(0.45rem, 1vw, 0.95rem)) !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .trophy-gold-glow {
+  transform: translateX(clamp(0.4rem, 1vw, 0.9rem)) !important;
+}
+
+@media (max-width: 900px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    grid-template-columns: minmax(0, 0.82fr) minmax(210px, 1.18fr) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    width: min(100%, 320px) !important;
+    max-height: 315px !important;
+  }
+}
+
+@media (max-width: 780px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    grid-template-columns: 1fr !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    max-width: 100% !important;
+    transform: none !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    justify-content: center !important;
+    margin-right: 0 !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    transform: none !important;
+  }
+}
+
+/* Emergency fix: center first-prize title without touching trophy/text layout. */
+.reward-classic-card--first.reward-first-balanced .reward-first-new {
+  position: relative !important;
+  display: block !important;
+  height: 100% !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+  position: absolute !important;
+  top: clamp(1.35rem, 2.2vw, 2rem) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 clamp(1.2rem, 2vw, 2rem) !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  transform: none !important;
+  z-index: 4 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-body {
+  height: 100% !important;
+  padding-top: clamp(4.9rem, 6.2vw, 6.1rem) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.78fr) minmax(240px, 1.32fr) !important;
+  gap: clamp(0.4rem, 1vw, 0.9rem) !important;
+  align-items: end !important;
+}
+
+@media (max-width: 900px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    grid-template-columns: minmax(0, 0.82fr) minmax(210px, 1.18fr) !important;
+    padding-top: clamp(4.7rem, 8vw, 5.8rem) !important;
+  }
+}
+
+@media (max-width: 780px) {
+  .reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+    position: static !important;
+    white-space: normal !important;
+    text-wrap: balance !important;
+    padding: 0 !important;
+    margin-top: 0.35rem !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-new {
+    display: grid !important;
+    grid-template-rows: auto 1fr !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    height: auto !important;
+    padding-top: 0 !important;
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Final safe reward correction: keep only the first-prize title centered and move trophy away from the text. */
+.reward-classic-card--first.reward-first-balanced .reward-first-new {
+  position: relative !important;
+  display: block !important;
+  height: 100% !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+  position: absolute !important;
+  top: clamp(1.22rem, 2vw, 1.88rem) !important;
+  left: calc(50% + 20px) !important;
+  right: auto !important;
+  width: max-content !important;
+  max-width: calc(100% - 3rem) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  transform: translateX(-50%) translateY(-2px) !important;
+  z-index: 4 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-body {
+  height: 100% !important;
+  padding-top: clamp(4.9rem, 6.2vw, 6.1rem) !important;
+  display: grid !important;
+  grid-template-columns: minmax(170px, 0.72fr) minmax(260px, 1.28fr) !important;
+  gap: clamp(1rem, 1.9vw, 2rem) !important;
+  align-items: end !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+  justify-self: start !important;
+  align-self: end !important;
+  max-width: 260px !important;
+  padding-bottom: clamp(2.1rem, 4.35vw, 3.9rem) !important;
+  transform: translateY(-0.1rem) !important;
+  z-index: 3 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+  justify-content: flex-end !important;
+  align-items: end !important;
+  justify-self: stretch !important;
+  padding-right: clamp(0.25rem, 0.7vw, 0.55rem) !important;
+  margin-right: 0 !important;
+  padding-bottom: clamp(0.45rem, 1.2vw, 1rem) !important;
+  z-index: 2 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+  width: min(100%, 315px) !important;
+  max-height: clamp(245px, 29vw, 350px) !important;
+  object-position: right bottom !important;
+  transform: translateX(calc(clamp(1.7rem, 3.2vw, 3.15rem) + 20px)) !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .trophy-gold-glow {
+  transform: translateX(calc(clamp(1.5rem, 3vw, 2.8rem) + 20px)) !important;
+}
+
+@media (max-width: 900px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    grid-template-columns: minmax(155px, 0.76fr) minmax(220px, 1.24fr) !important;
+    padding-top: clamp(4.7rem, 8vw, 5.8rem) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    width: min(100%, 285px) !important;
+    max-height: 310px !important;
+    transform: translateX(clamp(1.15rem, 2.7vw, 2.25rem)) !important;
+  }
+}
+
+@media (max-width: 780px) {
+  .reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-wrap: balance !important;
+    padding: 0 !important;
+    margin-top: 0.25rem !important;
+    transform: translateY(-2px) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-new {
+    display: grid !important;
+    grid-template-rows: auto 1fr !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    height: auto !important;
+    padding-top: 0 !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    justify-self: center !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    padding-bottom: 0.75rem !important;
+    transform: none !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    justify-content: center !important;
+    padding-right: 0 !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    transform: none !important;
+  }
+}
+
+/* Precise final first-prize positioning: center the title across the whole card, keep the cup close to the right edge. */
+.reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) translateY(-2px) !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-body {
+  grid-template-columns: minmax(190px, 0.58fr) minmax(250px, 1.42fr) !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+  position: absolute !important;
+  right: 10px !important;
+  bottom: clamp(0.85rem, 1.9vw, 1.55rem) !important;
+  width: min(50%, 315px) !important;
+  height: calc(100% - clamp(5.2rem, 6.4vw, 6.4rem)) !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-end !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+  width: min(100%, 285px) !important;
+  max-height: clamp(235px, 27vw, 335px) !important;
+  transform: none !important;
+  object-position: right bottom !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .trophy-gold-glow {
+  right: 10px !important;
+  transform: none !important;
+}
+
+@media (max-width: 900px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    right: 10px !important;
+    width: min(49%, 275px) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    width: min(100%, 250px) !important;
+    max-height: 295px !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 780px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    justify-content: center !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    width: min(100%, 265px) !important;
+  }
+}
+
+/* FINAL REWARD LOCK 2026-05-22
+   Keep every section unchanged, only rebuild the first-prize card positioning.
+   Goal: title centered across the whole card; trophy close to the right edge;
+   text stays on the left and never collides with the trophy. */
+.reward-classic-card--first.reward-first-balanced {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-new {
+  position: relative !important;
+  display: block !important;
+  height: 100% !important;
+  min-height: inherit !important;
+  z-index: 3 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+  position: absolute !important;
+  top: clamp(1.72rem, 2.45vw, 2.45rem) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 clamp(1rem, 2vw, 1.6rem) !important;
+  transform: translateY(-2px) !important;
+  text-align: center !important;
+  justify-self: auto !important;
+  z-index: 8 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-body {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  min-height: 0 !important;
+  z-index: 5 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+  position: absolute !important;
+  left: clamp(1.9rem, 3vw, 2.65rem) !important;
+  bottom: clamp(4.75rem, 7.1vw, 6.3rem) !important;
+  width: min(45%, 248px) !important;
+  max-width: 248px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  z-index: 9 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+  position: absolute !important;
+  right: 10px !important;
+  bottom: clamp(1.55rem, 2.5vw, 2.15rem) !important;
+  width: min(52%, 300px) !important;
+  height: min(70%, 350px) !important;
+  min-height: 0 !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 6 !important;
+  pointer-events: none !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+  display: block !important;
+  width: min(100%, 292px) !important;
+  max-width: 292px !important;
+  height: auto !important;
+  max-height: min(100%, 338px) !important;
+  object-fit: contain !important;
+  object-position: right bottom !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+
+.reward-classic-card--first.reward-first-balanced .trophy-gold-glow {
+  position: absolute !important;
+  right: -4px !important;
+  left: auto !important;
+  bottom: 0 !important;
+  width: min(56%, 320px) !important;
+  height: min(78%, 370px) !important;
+  transform: none !important;
+  z-index: 1 !important;
+}
+
+@media (max-width: 1023px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    left: clamp(1.55rem, 4vw, 2.25rem) !important;
+    bottom: clamp(4.2rem, 8vw, 5.7rem) !important;
+    width: min(45%, 230px) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    right: 10px !important;
+    width: min(52%, 276px) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    width: min(100%, 270px) !important;
+    max-width: 270px !important;
+  }
+}
+
+@media (max-width: 780px) {
+  .reward-classic-card--first.reward-first-balanced {
+    min-height: 520px !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+    top: 1.35rem !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    left: 50% !important;
+    bottom: 1.5rem !important;
+    width: calc(100% - 2.4rem) !important;
+    max-width: none !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    right: 50% !important;
+    bottom: 9rem !important;
+    width: min(72%, 270px) !important;
+    height: 250px !important;
+    transform: translateX(50%) !important;
+    justify-content: center !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    width: min(100%, 250px) !important;
+    max-width: 250px !important;
+    max-height: 245px !important;
+  }
+}
+
+/* URGENT SAFE FIX 2026-05-22: restore first prize layout without shrinking trophy.
+   Keep all other sections unchanged. Desktop: title centered, text left, trophy anchored right. */
+@media (min-width: 641px) {
+  .reward-classic-card--first.reward-first-balanced {
+    overflow: hidden !important;
+  }
+
+  .reward-first-new {
+    position: relative !important;
+    display: block !important;
+    height: 100% !important;
+  }
+
+  .reward-rank-text--first {
+    position: relative !important;
+    z-index: 8 !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    transform: translateY(-2px) !important;
+    text-align: center !important;
+  }
+
+  .reward-first-body {
+    position: absolute !important;
+    inset: clamp(4.7rem, 7vw, 6.2rem) 0 0 0 !important;
+    display: block !important;
+    min-height: 0 !important;
+  }
+
+  .reward-first-copy-new {
+    position: absolute !important;
+    z-index: 7 !important;
+    left: clamp(1.6rem, 3vw, 2.8rem) !important;
+    bottom: clamp(3.1rem, 5vw, 4.4rem) !important;
+    max-width: min(250px, 45%) !important;
+    padding-bottom: 0 !important;
+    text-align: left !important;
+  }
+
+  .reward-money-first {
+    font-size: clamp(2.05rem, 3.05vw, 3rem) !important;
+    line-height: 0.94 !important;
+  }
+
+  .reward-cup-text {
+    font-size: clamp(1.55rem, 2.35vw, 2.28rem) !important;
+    line-height: 0.98 !important;
+  }
+
+  .reward-first-trophy-wrap-new {
+    position: absolute !important;
+    z-index: 5 !important;
+    right: 10px !important;
+    bottom: clamp(1.5rem, 2.6vw, 2.35rem) !important;
+    display: flex !important;
+    width: clamp(235px, 22.5vw, 300px) !important;
+    height: clamp(285px, 29vw, 365px) !important;
+    min-height: 0 !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    padding: 0 !important;
+  }
+
+  .champion-trophy-new {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: right bottom !important;
+  }
+
+  .trophy-gold-glow {
+    inset: 0 -6px -4px auto !important;
+    width: min(105%, 330px) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .reward-first-copy-new {
+    left: clamp(1.75rem, 3.6vw, 3.15rem) !important;
+    max-width: 260px !important;
+  }
+
+  .reward-first-trophy-wrap-new {
+    width: clamp(250px, 23.5vw, 315px) !important;
+    height: clamp(300px, 30vw, 375px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-first-new {
+    display: grid !important;
+  }
+
+  .reward-first-body {
+    position: relative !important;
+    inset: auto !important;
+  }
+}
+
+/* FINAL VERIFIED FIRST PRIZE GRID LOCK 2026-05-22
+   Rebuild only the first prize card with a real two-column grid so the trophy and text cannot overlap. */
+@media (min-width: 781px) {
+  .reward-classic-card--first.reward-first-balanced {
+    min-height: clamp(390px, 36vw, 455px) !important;
+    overflow: hidden !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-new {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 4 !important;
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-rank-text--first {
+    position: absolute !important;
+    top: clamp(2.25rem, 3.1vw, 3.05rem) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 clamp(1.25rem, 2vw, 1.75rem) !important;
+    transform: translateY(-2px) !important;
+    text-align: center !important;
+    z-index: 10 !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    position: absolute !important;
+    inset: clamp(6.2rem, 8.2vw, 7.7rem) clamp(0.65rem, 1.25vw, 1rem) clamp(1.25rem, 2.3vw, 2rem) clamp(1.65rem, 2.7vw, 2.35rem) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.47fr) minmax(0, 0.53fr) !important;
+    align-items: end !important;
+    gap: clamp(1rem, 2vw, 1.75rem) !important;
+    min-height: 0 !important;
+    z-index: 7 !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-copy-new {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 270px !important;
+    padding: 0 0 clamp(1.4rem, 2.2vw, 2.2rem) 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    align-self: end !important;
+    justify-self: start !important;
+    text-align: left !important;
+    z-index: 12 !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-first-trophy-wrap-new {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: clamp(275px, 27vw, 350px) !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    align-self: end !important;
+    justify-self: end !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    z-index: 8 !important;
+    pointer-events: none !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    display: block !important;
+    width: auto !important;
+    max-width: min(100%, 278px) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: right bottom !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .trophy-gold-glow {
+    position: absolute !important;
+    inset: auto -0.35rem -0.25rem auto !important;
+    width: min(105%, 310px) !important;
+    height: min(100%, 360px) !important;
+    transform: none !important;
+    z-index: 1 !important;
+  }
+}
+
+@media (min-width: 781px) and (max-width: 1100px) {
+  .reward-classic-card--first.reward-first-balanced .reward-first-body {
+    grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr) !important;
+    gap: clamp(0.75rem, 1.5vw, 1.15rem) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-money-first {
+    font-size: clamp(1.85rem, 3.6vw, 2.45rem) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .reward-cup-text {
+    font-size: clamp(1.42rem, 2.75vw, 1.9rem) !important;
+  }
+
+  .reward-classic-card--first.reward-first-balanced .champion-trophy-new {
+    max-width: min(100%, 245px) !important;
+  }
+}
+
+/* Client fallback: render the exported Figma layer for the first prize card as-is.
+   This prevents CSS text/trophy positioning from overlapping. */
+.reward-classic-card--first.reward-first-svg-card {
+  padding: 0 !important;
+  background: transparent !important;
+  min-height: auto !important;
+  contain: paint !important;
+  box-shadow: 0 24px 70px rgba(124, 45, 18, 0.12) !important;
+  ring: 0 !important;
+}
+
+.reward-classic-card--first.reward-first-svg-card .reward-first-svg-layer {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  object-fit: contain !important;
+}
+
+@media (min-width: 1024px) {
+  .reward-classic-card--first.reward-first-svg-card {
+    align-self: stretch !important;
+  }
+  .reward-classic-card--first.reward-first-svg-card .reward-first-svg-layer {
+    height: 100% !important;
+    object-fit: fill !important;
+  }
+}
+
+/* FINAL: rebuilt first prize card with a stable flex/grid layout; do not overlap trophy and text. */
+.reward-first-final-card {
+  min-height: clamp(390px, 35vw, 455px) !important;
+  background: linear-gradient(112deg, #fffaf0 0%, #fff3bf 100%) !important;
+}
+
+.reward-first-final-glow {
+  position: absolute;
+  inset: auto 0 0 auto;
+  width: 62%;
+  height: 78%;
+  border-radius: 999px;
+  background: radial-gradient(circle at 66% 58%, rgba(255, 215, 88, 0.42), transparent 60%);
+  pointer-events: none;
+}
+
+.reward-first-final-title {
+  position: relative !important;
+  z-index: 5 !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 auto clamp(1.25rem, 2.2vw, 2rem) !important;
+  text-align: center !important;
+  color: #f36a16 !important;
+  font-size: clamp(2.55rem, 4.15vw, 4.2rem) !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.055em !important;
+  white-space: nowrap !important;
+}
+
+.reward-first-final-body {
+  position: relative !important;
+  z-index: 4 !important;
+  display: grid !important;
+  grid-template-columns: minmax(170px, 0.88fr) minmax(230px, 1.12fr) !important;
+  align-items: end !important;
+  min-height: clamp(260px, 25vw, 330px) !important;
+  column-gap: clamp(0.75rem, 1.6vw, 1.3rem) !important;
+}
+
+.reward-first-final-copy {
+  position: relative !important;
+  z-index: 6 !important;
+  align-self: end !important;
+  justify-self: start !important;
+  width: 100% !important;
+  max-width: 240px !important;
+  padding-bottom: clamp(1.05rem, 2vw, 1.7rem) !important;
+  text-align: left !important;
+}
+
+.reward-first-final-card .reward-money-first {
+  color: #334155 !important;
+  font-size: clamp(2.05rem, 3vw, 3rem) !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.065em !important;
+  white-space: nowrap !important;
+}
+
+.reward-first-final-card .reward-cup-text {
+  margin-top: 0.25rem !important;
+  color: #334155 !important;
+  font-size: clamp(1.55rem, 2.25vw, 2.25rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.reward-first-final-trophy-wrap {
+  position: relative !important;
+  z-index: 5 !important;
+  justify-self: end !important;
+  align-self: end !important;
+  width: min(100%, 300px) !important;
+  margin-right: -0.35rem !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-end !important;
+}
+
+.reward-first-final-trophy-wrap .trophy-gold-glow {
+  inset: 6% -8% -4% -8% !important;
+}
+
+.reward-first-final-trophy {
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
+  width: clamp(230px, 24vw, 300px) !important;
+  max-width: 300px !important;
+  height: auto !important;
+  max-height: 330px !important;
+  object-fit: contain !important;
+  filter: saturate(1.16) contrast(1.08) drop-shadow(0 22px 26px rgba(92, 44, 0, 0.28)) drop-shadow(0 0 34px rgba(255, 212, 66, 0.42)) !important;
+}
+
+@media (max-width: 1023px) {
+  .reward-first-final-card {
+    min-height: 400px !important;
+  }
+
+  .reward-first-final-body {
+    grid-template-columns: minmax(150px, 0.85fr) minmax(200px, 1.15fr) !important;
+    min-height: 280px !important;
+  }
+
+  .reward-first-final-copy {
+    max-width: 205px !important;
+  }
+
+  .reward-first-final-trophy-wrap {
+    width: min(100%, 255px) !important;
+    margin-right: -0.2rem !important;
+  }
+
+  .reward-first-final-trophy {
+    width: clamp(210px, 30vw, 255px) !important;
+    max-width: 255px !important;
+    max-height: 285px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-first-final-card {
+    min-height: auto !important;
+    padding: 1.25rem !important;
+  }
+
+  .reward-first-final-title {
+    font-size: clamp(2rem, 10vw, 3.1rem) !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .reward-first-final-body {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    gap: 0.9rem !important;
+  }
+
+  .reward-first-final-copy {
+    order: 2 !important;
+    justify-self: center !important;
+    max-width: 100% !important;
+    padding-bottom: 0 !important;
+    text-align: center !important;
+  }
+
+  .reward-first-final-trophy-wrap {
+    order: 1 !important;
+    justify-self: center !important;
+    width: min(80%, 220px) !important;
+    margin-right: 0 !important;
+    justify-content: center !important;
+  }
+
+  .reward-first-final-trophy {
+    width: min(100%, 210px) !important;
+    max-height: 225px !important;
+  }
+}
+
+
+/* Client adjustment: make first-prize money/cup text slightly smaller and center cup lines under the amount. */
+.reward-first-final-copy {
+  text-align: center !important;
+}
+
+.reward-first-final-card .reward-money-first {
+  font-size: clamp(1.9rem, 2.8vw, 2.82rem) !important;
+}
+
+.reward-first-final-card .reward-cup-text {
+  font-size: clamp(1.38rem, 2.05vw, 2.02rem) !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* Client adjustment: keep prize amount and cup title the same size, reduced by one quarter with safe line-height. */
+.reward-first-final-card .reward-money-first,
+.reward-first-final-card .reward-cup-text {
+  font-size: clamp(1.09rem, 1.46vw, 1.46rem) !important;
+  line-height: 1.1 !important;
+}
+
+/* Final responsive correction: keep first-prize copy and cup separated at normal browser zooms. */
+.reward-first-final-card {
+  overflow: hidden !important;
+}
+
+.reward-first-final-body {
+  grid-template-columns: minmax(205px, 0.46fr) minmax(190px, 0.54fr) !important;
+  column-gap: clamp(1.35rem, 3.2vw, 3rem) !important;
+  min-height: clamp(250px, 23vw, 315px) !important;
+}
+
+.reward-first-final-copy {
+  align-self: end !important;
+  justify-self: center !important;
+  max-width: 220px !important;
+  padding-bottom: clamp(1.25rem, 2.4vw, 2rem) !important;
+  text-align: center !important;
+}
+
+.reward-first-final-card .reward-money-first {
+  font-size: clamp(1.72rem, 2.15vw, 2.26rem) !important;
+  line-height: 1.03 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+
+.reward-first-final-card .reward-cup-text {
+  margin-top: 0.45rem !important;
+  font-size: clamp(1.34rem, 1.72vw, 1.76rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0 !important;
+}
+
+.reward-first-final-trophy-wrap {
+  width: min(100%, 268px) !important;
+  margin-right: 0 !important;
+  overflow: visible !important;
+}
+
+.reward-first-final-trophy {
+  width: min(100%, clamp(210px, 20vw, 268px)) !important;
+  max-width: 268px !important;
+  max-height: 306px !important;
+}
+
+.cup-fireworks {
+  position: absolute;
+  left: 51%;
+  top: 16%;
+  z-index: 6;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.cup-fireworks__spark,
+.cup-fireworks__petal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.cup-fireworks__spark {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #facc15;
+  box-shadow:
+    0 0 10px rgba(250, 204, 21, 0.92),
+    0 0 18px rgba(249, 115, 22, 0.62);
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(0) scale(0.3);
+  animation: cup-spark-burst 3.2s var(--spark-delay) ease-out infinite;
+}
+
+.cup-fireworks__spark:nth-child(3n + 1) {
+  background: #fb7185;
+  box-shadow:
+    0 0 10px rgba(251, 113, 133, 0.82),
+    0 0 18px rgba(255, 255, 255, 0.44);
+}
+
+.cup-fireworks__spark:nth-child(3n + 2) {
+  background: #38bdf8;
+  box-shadow:
+    0 0 10px rgba(56, 189, 248, 0.82),
+    0 0 18px rgba(255, 255, 255, 0.4);
+}
+
+.cup-fireworks__petal {
+  width: 10px;
+  height: 6px;
+  border-radius: 999px 999px 999px 2px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(251, 113, 133, 0.82));
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0) scale(0.6);
+  animation: cup-petal-fall 4.1s var(--petal-delay) ease-in-out infinite;
+}
+
+@keyframes cup-spark-burst {
+  0%,
+  50% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(0) scale(0.25);
+  }
+
+  57% {
+    opacity: 1;
+  }
+
+  76% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(calc(var(--spark-distance) * -1)) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateY(calc(var(--spark-distance) * -1.16)) scale(0.2);
+  }
+}
+
+@keyframes cup-petal-fall {
+  0%,
+  48% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0) scale(0.6);
+  }
+
+  56% {
+    opacity: 0.88;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(var(--petal-x), var(--petal-y)) rotate(var(--petal-rotate)) scale(1);
+  }
+}
+
+/* Phone layout: show all five destination photos by stacking them cleanly. */
+@media (max-width: 760px) {
+  .experience-collage {
+    display: grid !important;
+    width: min(100%, 520px) !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+    gap: 0.95rem !important;
+    overflow: visible !important;
+  }
+
+  .experience-card,
+  .experience-card--left-top,
+  .experience-card--left-bottom,
+  .experience-card--featured,
+  .experience-card--right-top,
+  .experience-card--right-bottom {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    min-height: clamp(188px, 56vw, 255px) !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  .experience-card--featured {
+    min-height: clamp(235px, 72vw, 330px) !important;
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .experience-card-overlay {
+    padding: 0.75rem !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .reward-first-final-body {
+    grid-template-columns: minmax(190px, 0.46fr) minmax(185px, 0.54fr) !important;
+    column-gap: clamp(1rem, 3vw, 2.2rem) !important;
+  }
+
+  .reward-first-final-trophy-wrap {
+    width: min(100%, 250px) !important;
+  }
+
+  .reward-first-final-trophy {
+    width: min(100%, 245px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-first-final-card {
+    padding: 1.15rem !important;
+  }
+
+  .reward-first-final-title {
+    white-space: normal !important;
+  }
+
+  .reward-first-final-body {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .reward-first-final-copy {
+    max-width: 100% !important;
+    padding-bottom: 0 !important;
+  }
+
+  .reward-first-final-card .reward-money-first {
+    font-size: clamp(1.62rem, 7.2vw, 2.1rem) !important;
+  }
+
+  .reward-first-final-card .reward-cup-text {
+    font-size: clamp(1.3rem, 6vw, 1.72rem) !important;
+  }
+
+  .reward-first-final-trophy-wrap {
+    width: min(76%, 230px) !important;
+  }
+
+  .reward-first-final-trophy {
+    width: min(100%, 220px) !important;
+    max-height: 232px !important;
+  }
+
+  .cup-fireworks {
+    left: 51%;
+    top: 15%;
+    transform: scale(0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cup-fireworks__spark,
+  .cup-fireworks__petal {
+    animation: none !important;
+  }
+}
+
+/* Strong final lock: fixed left copy lane, right-anchored cup, spectacular trophy burst. */
+.reward-first-final-card {
+  min-height: clamp(380px, 33vw, 442px) !important;
+  padding: clamp(1.35rem, 2.2vw, 1.9rem) !important;
+  background:
+    radial-gradient(circle at 82% 42%, rgba(255, 222, 71, 0.62), transparent 32%),
+    radial-gradient(circle at 28% 78%, rgba(255, 255, 255, 0.92), transparent 36%),
+    linear-gradient(112deg, #fffaf2 0%, #fff2bc 100%) !important;
+}
+
+.reward-first-final-title {
+  margin-bottom: 0 !important;
+  font-size: clamp(2.45rem, 4vw, 4rem) !important;
+  line-height: 0.96 !important;
+}
+
+.reward-first-final-body {
+  position: relative !important;
+  display: block !important;
+  min-height: clamp(265px, 23.5vw, 322px) !important;
+}
+
+.reward-first-final-copy {
+  position: absolute !important;
+  left: clamp(1.1rem, 2.3vw, 1.9rem) !important;
+  bottom: clamp(3.75rem, 6.2vw, 5.35rem) !important;
+  z-index: 12 !important;
+  width: min(38%, 196px) !important;
+  max-width: 196px !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+.reward-first-final-card .reward-money-first {
+  font-size: clamp(1.48rem, 1.82vw, 1.92rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.01em !important;
+  white-space: nowrap !important;
+}
+
+.reward-first-final-card .reward-cup-text {
+  margin-top: 0.42rem !important;
+  font-size: clamp(1.18rem, 1.42vw, 1.46rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.005em !important;
+}
+
+.reward-first-final-trophy-wrap {
+  position: absolute !important;
+  right: clamp(0.15rem, 1.1vw, 0.85rem) !important;
+  bottom: clamp(1.65rem, 2.75vw, 2.45rem) !important;
+  z-index: 7 !important;
+  width: clamp(222px, 21.5vw, 282px) !important;
+  max-width: 52% !important;
+  height: clamp(250px, 24vw, 326px) !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+.reward-first-final-trophy {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: right bottom !important;
+  filter:
+    saturate(1.24)
+    contrast(1.1)
+    drop-shadow(0 22px 26px rgba(92, 44, 0, 0.3))
+    drop-shadow(0 0 42px rgba(250, 204, 21, 0.72)) !important;
+}
+
+.cup-fireworks {
+  left: 52% !important;
+  top: 15% !important;
+  z-index: 14 !important;
+  filter: saturate(1.45) drop-shadow(0 0 10px rgba(250, 204, 21, 0.8));
+}
+
+.cup-fireworks::before,
+.cup-fireworks::after,
+.cup-fireworks__ring,
+.cup-fireworks__ray {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.cup-fireworks::before {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, #fff 0 20%, #fef08a 21% 48%, rgba(249, 115, 22, 0) 70%);
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.98),
+    0 0 38px rgba(250, 204, 21, 0.96),
+    0 0 72px rgba(249, 115, 22, 0.62);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.35);
+  animation: cup-star-core 2.65s ease-out infinite;
+}
+
+.cup-fireworks::after {
+  width: 76px;
+  height: 76px;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 8px rgba(250, 204, 21, 0.18),
+    0 0 42px rgba(250, 204, 21, 0.58);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.1);
+  animation: cup-shockwave 2.65s 0.05s ease-out infinite;
+}
+
+.cup-fireworks__ring {
+  width: 110px;
+  height: 110px;
+  border: 2px dashed rgba(251, 113, 133, 0.74);
+  border-radius: 999px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.12) rotate(0deg);
+  animation: cup-shockwave 2.65s 0.22s ease-out infinite;
+}
+
+.cup-fireworks__ring--two {
+  width: 150px;
+  height: 150px;
+  border-color: rgba(56, 189, 248, 0.62);
+  animation-delay: 0.38s;
+  animation-duration: 2.85s;
+}
+
+.cup-fireworks__ray {
+  width: 4px;
+  height: 64px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff7ad 34%, #fb7185 74%, rgba(251, 113, 133, 0));
+  opacity: 0;
+  transform-origin: 50% 100%;
+  transform: translate(-50%, -100%) rotate(var(--ray-angle)) scaleY(0.08);
+  animation: cup-ray-pop 2.8s var(--ray-delay) ease-out infinite;
+}
+
+.cup-fireworks__spark {
+  width: 9px !important;
+  height: 9px !important;
+  animation-duration: 2.85s !important;
+}
+
+.cup-fireworks__spark:nth-child(4n + 1) {
+  background: #ffffff !important;
+}
+
+.cup-fireworks__spark:nth-child(4n + 2) {
+  background: #facc15 !important;
+}
+
+.cup-fireworks__spark:nth-child(4n + 3) {
+  background: #22c55e !important;
+}
+
+.cup-fireworks__petal {
+  width: 14px !important;
+  height: 8px !important;
+  background: linear-gradient(135deg, #fff7ed, #fb7185 58%, #f97316) !important;
+  animation-duration: 3.65s !important;
+}
+
+@keyframes cup-star-core {
+  0%,
+  45% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+  }
+
+  52% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.18);
+  }
+
+  70% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(0.82);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+}
+
+@keyframes cup-shockwave {
+  0%,
+  45% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.08) rotate(0deg);
+  }
+
+  54% {
+    opacity: 0.92;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.18) rotate(48deg);
+  }
+}
+
+@keyframes cup-ray-pop {
+  0%,
+  48% {
+    opacity: 0;
+    transform: translate(-50%, -100%) rotate(var(--ray-angle)) scaleY(0.08);
+  }
+
+  55% {
+    opacity: 0.96;
+    transform: translate(-50%, -100%) rotate(var(--ray-angle)) scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -120%) rotate(var(--ray-angle)) scaleY(0.18);
+  }
+}
+
+@media (max-width: 1023px) {
+  .reward-first-final-card {
+    min-height: 390px !important;
+  }
+
+  .reward-first-final-copy {
+    left: 1rem !important;
+    bottom: 4.45rem !important;
+    width: 180px !important;
+    max-width: 180px !important;
+  }
+
+  .reward-first-final-card .reward-money-first {
+    font-size: clamp(1.34rem, 3.1vw, 1.72rem) !important;
+  }
+
+  .reward-first-final-card .reward-cup-text {
+    font-size: clamp(1.08rem, 2.55vw, 1.32rem) !important;
+  }
+
+  .reward-first-final-trophy-wrap {
+    right: 0.2rem !important;
+    width: clamp(205px, 36vw, 246px) !important;
+    height: clamp(232px, 42vw, 294px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .reward-first-final-card {
+    min-height: 500px !important;
+  }
+
+  .reward-first-final-body {
+    min-height: 400px !important;
+  }
+
+  .reward-first-final-copy {
+    left: 50% !important;
+    bottom: 1.15rem !important;
+    width: calc(100% - 2rem) !important;
+    max-width: 280px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .reward-first-final-trophy-wrap {
+    left: 50% !important;
+    right: auto !important;
+    bottom: 8.45rem !important;
+    width: min(76%, 230px) !important;
+    height: 245px !important;
+    transform: translateX(-50%) !important;
+    justify-content: center !important;
+  }
+
+  .reward-first-final-card .reward-money-first {
+    font-size: clamp(1.55rem, 6.2vw, 1.95rem) !important;
+  }
+
+  .reward-first-final-card .reward-cup-text {
+    font-size: clamp(1.18rem, 5vw, 1.48rem) !important;
+  }
+
+  .cup-fireworks {
+    top: 14% !important;
+    transform: scale(0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cup-fireworks::before,
+  .cup-fireworks::after,
+  .cup-fireworks__ring,
+  .cup-fireworks__ray {
+    animation: none !important;
+  }
+}
+
+/* Pixel lock pass: match the Figma composition with title, copy, and cup in separate lanes. */
+@media (min-width: 781px) {
+  .reward-first-final-card {
+    min-height: clamp(410px, 35vw, 476px) !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .reward-first-final-title {
+    position: absolute !important;
+    top: clamp(2.35rem, 3.3vw, 3.05rem) !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 18 !important;
+    margin: 0 !important;
+    padding: 0 clamp(1rem, 2vw, 1.6rem) !important;
+    font-size: clamp(2.42rem, 3.82vw, 3.75rem) !important;
+    line-height: 0.95 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  .reward-first-final-body {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    min-height: 0 !important;
+    z-index: 7 !important;
+  }
+
+  .reward-first-final-copy {
+    position: absolute !important;
+    top: clamp(10.5rem, 14vw, 12.35rem) !important;
+    left: clamp(1.75rem, 3.9vw, 3rem) !important;
+    bottom: auto !important;
+    z-index: 16 !important;
+    width: min(36%, 198px) !important;
+    max-width: 198px !important;
+    transform: none !important;
+    text-align: center !important;
+  }
+
+  .reward-first-final-card .reward-money-first {
+    font-size: clamp(1.32rem, 1.66vw, 1.72rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .reward-first-final-card .reward-cup-text {
+    margin-top: 0.42rem !important;
+    font-size: clamp(1.02rem, 1.32vw, 1.34rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .reward-first-final-trophy-wrap {
+    position: absolute !important;
+    right: clamp(0.85rem, 2vw, 1.65rem) !important;
+    bottom: clamp(1.75rem, 2.65vw, 2.4rem) !important;
+    left: auto !important;
+    top: auto !important;
+    z-index: 12 !important;
+    width: min(43%, 248px) !important;
+    height: clamp(258px, 23.8vw, 308px) !important;
+    max-width: 248px !important;
+    margin: 0 !important;
+    transform: none !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    overflow: visible !important;
+  }
+
+  .reward-first-final-trophy {
+    width: auto !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: right bottom !important;
+  }
+}
+
+/* Deluxe 3D firework layer: brighter, denser, and centered at the cup lip. */
+.cup-fireworks {
+  left: 52% !important;
+  top: 14% !important;
+  z-index: 28 !important;
+  perspective: 640px;
+  transform-style: preserve-3d;
+  mix-blend-mode: screen;
+}
+
+.cup-fireworks::before {
+  width: 34px !important;
+  height: 34px !important;
+  background:
+    radial-gradient(circle, #fff 0 18%, #fff7ad 19% 42%, rgba(250, 204, 21, 0.72) 43% 58%, transparent 72%) !important;
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 46px rgba(250, 204, 21, 1),
+    0 0 88px rgba(249, 115, 22, 0.9),
+    0 0 122px rgba(56, 189, 248, 0.38) !important;
+  animation: cup-star-core 2.35s ease-out infinite !important;
+}
+
+.cup-fireworks::after {
+  width: 116px !important;
+  height: 116px !important;
+  border-width: 3px !important;
+  border-color: rgba(255, 255, 255, 0.92) !important;
+  box-shadow:
+    0 0 0 10px rgba(250, 204, 21, 0.18),
+    0 0 0 24px rgba(251, 113, 133, 0.1),
+    0 0 66px rgba(250, 204, 21, 0.72) !important;
+  animation: cup-shockwave 2.35s 0.06s ease-out infinite !important;
+}
+
+.cup-fireworks__ring {
+  border-width: 3px !important;
+  box-shadow: 0 0 38px rgba(255, 255, 255, 0.42);
+  animation-duration: 2.45s !important;
+}
+
+.cup-fireworks__ring--one {
+  width: 154px !important;
+  height: 154px !important;
+  border-color: rgba(255, 0, 132, 0.72) !important;
+}
+
+.cup-fireworks__ring--two {
+  width: 210px !important;
+  height: 210px !important;
+  border-color: rgba(34, 211, 238, 0.72) !important;
+}
+
+.cup-fireworks__ray {
+  width: 5px !important;
+  height: 92px !important;
+  background: linear-gradient(180deg, transparent, #fff 18%, #fef08a 38%, #fb7185 72%, transparent) !important;
+  filter: blur(0.15px) drop-shadow(0 0 10px rgba(250, 204, 21, 0.9));
+  transform-origin: 50% 100%;
+  animation-duration: 2.45s !important;
+}
+
+.cup-fireworks__spark {
+  width: 10px !important;
+  height: 10px !important;
+  box-shadow:
+    0 0 14px currentColor,
+    0 0 26px rgba(255, 255, 255, 0.75) !important;
+  animation-name: cup-spark-burst-3d !important;
+  animation-duration: 2.55s !important;
+}
+
+.cup-fireworks__spark:nth-child(5n + 1) { color: #ffffff; background: #ffffff !important; }
+.cup-fireworks__spark:nth-child(5n + 2) { color: #facc15; background: #facc15 !important; }
+.cup-fireworks__spark:nth-child(5n + 3) { color: #22c55e; background: #22c55e !important; }
+.cup-fireworks__spark:nth-child(5n + 4) { color: #38bdf8; background: #38bdf8 !important; }
+.cup-fireworks__spark:nth-child(5n) { color: #fb7185; background: #fb7185 !important; }
+
+.cup-fireworks__petal {
+  width: 16px !important;
+  height: 9px !important;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.42);
+  animation-duration: 3.35s !important;
+}
+
+.reward-first-final-trophy-wrap::before,
+.reward-first-final-trophy-wrap::after {
+  position: absolute;
+  left: 50%;
+  top: 24%;
+  z-index: 4;
+  pointer-events: none;
+  content: "";
+  transform-style: preserve-3d;
+  mix-blend-mode: screen;
+}
+
+.reward-first-final-trophy-wrap::before {
+  width: min(190px, 78%);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background:
+    conic-gradient(from 0deg, transparent 0deg, rgba(56, 189, 248, 0.95) 28deg, transparent 58deg, rgba(250, 204, 21, 0.98) 108deg, transparent 142deg, rgba(251, 113, 133, 0.9) 196deg, transparent 236deg, rgba(34, 197, 94, 0.88) 300deg, transparent 360deg);
+  opacity: 0.62;
+  filter: blur(0.2px) drop-shadow(0 0 22px rgba(250, 204, 21, 0.92)) drop-shadow(0 0 34px rgba(56, 189, 248, 0.48));
+  -webkit-mask: radial-gradient(circle, transparent 0 46%, #000 48% 61%, transparent 64%);
+  mask: radial-gradient(circle, transparent 0 46%, #000 48% 61%, transparent 64%);
+  transform: translate(-50%, -50%) rotateX(62deg) rotateZ(0deg) scale(0.92);
+  animation: trophy-hologram-orbit 2.8s linear infinite;
+}
+
+.reward-first-final-trophy-wrap::after {
+  width: min(230px, 92%);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.98) 0 2px, transparent 3px),
+    radial-gradient(circle at 18% 34%, rgba(56, 189, 248, 0.9) 0 3px, transparent 4px),
+    radial-gradient(circle at 72% 24%, rgba(250, 204, 21, 0.94) 0 4px, transparent 5px),
+    radial-gradient(circle at 86% 58%, rgba(251, 113, 133, 0.88) 0 3px, transparent 4px),
+    radial-gradient(circle at 32% 78%, rgba(34, 197, 94, 0.82) 0 3px, transparent 4px),
+    radial-gradient(circle at 52% 52%, rgba(255, 255, 255, 0.2), transparent 54%);
+  opacity: 0.88;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 24px rgba(250, 204, 21, 0.58));
+  transform: translate(-50%, -50%) rotateX(52deg) translateZ(18px) scale(0.9);
+  animation: trophy-depth-sparkles 2.2s ease-in-out infinite;
+}
+
+@keyframes cup-spark-burst-3d {
+  0%,
+  38% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translate3d(0, 0, -60px) scale(0.18);
+  }
+
+  48% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translate3d(0, calc(var(--spark-distance) * -0.42), 80px) scale(1.35);
+  }
+
+  74% {
+    opacity: 0.92;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translate3d(0, calc(var(--spark-distance) * -1), 18px) scale(0.92);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translate3d(0, calc(var(--spark-distance) * -1.24), -110px) scale(0.14);
+  }
+}
+
+@keyframes trophy-hologram-orbit {
+  0% {
+    transform: translate(-50%, -50%) rotateX(62deg) rotateZ(0deg) scale(0.9);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: translate(-50%, -50%) rotateX(62deg) rotateZ(180deg) scale(1.04);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotateX(62deg) rotateZ(360deg) scale(0.9);
+  }
+}
+
+@keyframes trophy-depth-sparkles {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: translate(-50%, -50%) rotateX(52deg) translateZ(-12px) scale(0.78) rotateZ(-12deg);
+  }
+
+  45% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateX(52deg) translateZ(42px) scale(1.08) rotateZ(16deg);
+  }
+}
+
+@media (min-width: 781px) and (max-width: 1100px) {
+  .reward-first-final-title {
+    top: 2.15rem !important;
+    font-size: clamp(2.2rem, 4.6vw, 3rem) !important;
+  }
+
+  .reward-first-final-copy {
+    top: clamp(9.8rem, 15.5vw, 11.2rem) !important;
+    left: clamp(1.5rem, 3.2vw, 2rem) !important;
+    width: min(35%, 178px) !important;
+    max-width: 178px !important;
+  }
+
+  .reward-first-final-card .reward-money-first {
+    font-size: clamp(1.18rem, 2.7vw, 1.48rem) !important;
+  }
+
+  .reward-first-final-card .reward-cup-text {
+    font-size: clamp(0.98rem, 2.25vw, 1.18rem) !important;
+  }
+
+  .reward-first-final-trophy-wrap {
+    right: 0.75rem !important;
+    bottom: 2rem !important;
+    width: min(45%, 220px) !important;
+    height: clamp(245px, 30vw, 286px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .cup-fireworks {
+    transform: scale(0.78);
+  }
+}
+
+/* Highest-specificity lock for first-prize copy; overrides older client-fix selectors. */
+body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy .reward-money-first,
+body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy p.reward-money-first:first-child {
+  font-size: clamp(1.98rem, 2.49vw, 2.58rem) !important;
+  line-height: 1.04 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+
+body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy .reward-cup-text,
+body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy p.reward-cup-text:nth-child(2) {
+  margin-top: 0.42rem !important;
+  font-size: clamp(1.53rem, 1.98vw, 2.01rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0 !important;
+}
+
+body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy {
+  top: clamp(11.45rem, 15.2vw, 13.25rem) !important;
+}
+
+@media (min-width: 781px) and (max-width: 1100px) {
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy .reward-money-first,
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy p.reward-money-first:first-child {
+    font-size: clamp(1.77rem, 4.05vw, 2.22rem) !important;
+  }
+
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy .reward-cup-text,
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy p.reward-cup-text:nth-child(2) {
+    font-size: clamp(1.47rem, 3.38vw, 1.77rem) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy .reward-money-first,
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy p.reward-money-first:first-child {
+    font-size: clamp(1.42rem, 5.7vw, 1.78rem) !important;
+  }
+
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy .reward-cup-text,
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy p.reward-cup-text:nth-child(2) {
+    font-size: clamp(1.12rem, 4.5vw, 1.38rem) !important;
+  }
+}
+
+/* Experience collage final balance: larger desktop composition, compact complete mobile view. */
+.experience-collage {
+  width: min(100%, 1120px) !important;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(300px, 1.12fr) minmax(390px, 1.52fr) !important;
+  grid-template-rows: repeat(2, minmax(210px, 226px)) !important;
+  gap: clamp(1rem, 1.35vw, 1.35rem) !important;
+  margin-top: clamp(2rem, 3.2vw, 3rem) !important;
+}
+
+.experience-card {
+  min-height: 210px !important;
+  border-radius: 1.18rem !important;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.13) !important;
+}
+
+.experience-card--featured {
+  min-height: 452px !important;
+}
+
+.experience-card--left-top,
+.experience-card--left-bottom,
+.experience-card--right-top,
+.experience-card--right-bottom {
+  min-height: 210px !important;
+}
+
+.experience-card img {
+  object-position: center center !important;
+}
+
+.experience-card--featured img {
+  object-position: center center !important;
+}
+
+.experience-caption {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.78), 0 0 18px rgba(0, 0, 0, 0.46) !important;
+}
+
+@media (min-width: 1180px) {
+  .experience-collage {
+    width: min(100%, 1160px) !important;
+    grid-template-rows: repeat(2, minmax(220px, 238px)) !important;
+  }
+
+  .experience-card--featured {
+    min-height: 476px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .experience-collage {
+    width: min(100%, 760px) !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) !important;
+    grid-template-rows: repeat(3, minmax(185px, auto)) !important;
+  }
+
+  .experience-card--left-top {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .experience-card--left-bottom {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  .experience-card--featured {
+    grid-column: 2 !important;
+    grid-row: 1 / span 2 !important;
+    min-height: 390px !important;
+  }
+
+  .experience-card--right-top {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+
+  .experience-card--right-bottom {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .experience-collage {
+    display: grid !important;
+    width: min(100%, 440px) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: none !important;
+    gap: 0.75rem !important;
+    margin-top: 1.55rem !important;
+    overflow: visible !important;
+  }
+
+  .experience-card,
+  .experience-card--left-top,
+  .experience-card--left-bottom,
+  .experience-card--right-top,
+  .experience-card--right-bottom {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: 1.12 / 1 !important;
+    border-radius: 0.95rem !important;
+  }
+
+  .experience-card--featured {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  .experience-card img {
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: none !important;
+  }
+
+  .experience-card--featured img {
+    object-fit: contain !important;
+    background: #0f172a !important;
+  }
+
+  .experience-card-overlay {
+    padding: 0.5rem !important;
+  }
+
+  .experience-caption {
+    border-radius: 0.72rem !important;
+    padding: 0.48rem 0.55rem !important;
+  }
+
+  .experience-caption-title,
+  .experience-card--small .experience-caption-title,
+  .experience-card--featured .experience-caption-title {
+    font-size: clamp(0.72rem, 3vw, 0.9rem) !important;
+    line-height: 1.08 !important;
+    min-height: 0 !important;
+  }
+
+  .experience-caption-copy,
+  .experience-card--small .experience-caption-copy,
+  .experience-card--featured .experience-caption-copy {
+    margin-top: 0.18rem !important;
+    min-height: 0 !important;
+    font-size: clamp(0.58rem, 2.35vw, 0.68rem) !important;
+    line-height: 1.18 !important;
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .experience-collage {
+    width: min(100%, 390px) !important;
+    gap: 0.62rem !important;
+  }
+
+  .experience-card,
+  .experience-card--left-top,
+  .experience-card--left-bottom,
+  .experience-card--right-top,
+  .experience-card--right-bottom {
+    aspect-ratio: 1.08 / 1 !important;
+  }
+
+  .experience-card--featured {
+    aspect-ratio: 16 / 10 !important;
+  }
+}
+
+/* Mobile-only first-prize spacing lock:
+   title -> cup gap equals cup -> prize-copy gap. Desktop/tablet stays unchanged. */
+@media (max-width: 640px) {
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card {
+    min-height: 590px !important;
+  }
+
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-first-final-body {
+    position: relative !important;
+    min-height: 470px !important;
+  }
+
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-first-final-trophy-wrap {
+    top: 3.25rem !important;
+    bottom: auto !important;
+    left: 50% !important;
+    right: auto !important;
+    width: min(76%, 230px) !important;
+    height: 245px !important;
+    transform: translateX(-50%) !important;
+    justify-content: center !important;
+  }
+
+  body .reward-classic-card.reward-classic-card--first.reward-first-final-card .reward-count-main.reward-first-final-copy {
+    top: calc(3.25rem + 245px + 3.5rem) !important;
+    bottom: auto !important;
+    left: 50% !important;
+    width: calc(100% - 2rem) !important;
+    max-width: 300px !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+  }
+}
