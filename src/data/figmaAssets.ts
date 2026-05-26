@@ -27,7 +27,7 @@ export const figmaAssets = {
     dayThree: publicAsset('journey-day-3.webp')
   },
   stages: {
-    tug: publicAsset('stage-tug-new.png'),
+    tug: publicAsset('stage-tug-v2.png'),
     team: publicAsset('stage-team.webp'),
     talent: publicAsset('stage-talent.webp')
   },
